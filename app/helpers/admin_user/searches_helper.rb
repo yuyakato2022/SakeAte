@@ -1,0 +1,2 @@
+module AdminUser::SearchesHelper
+end
