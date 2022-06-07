@@ -1,2 +1,9 @@
-<h1>AdminUser::Alcohols#edit</h1>
-<p>Find me in app/views/admin_user/alcohols/edit.html.erb</p>
+<h3>お酒変更</h3>
+<div class="alcohol_addition">
+  <%= form_with model: @alcohol, url: admin_user_alcohol_path, method: :patch do |f| %>
+   <%= f.label :name, '種類' %>
+   <%= f.text_field :name %>
+   <%= f.submit "変更" %>
+  <% end %>
+  <%= link_to "戻る", admin_user_alcohols_path %>
+</div>

@@ -59,41 +59,40 @@ ActiveRecord::Schema.define(version: 2022_06_06_121038) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.integer "user_id_id"
-    t.integer "recipe_id_id"
+    t.integer "user_id"
+    t.integer "recipe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipe_id_id"], name: "index_bookmarks_on_recipe_id_id"
-    t.index ["user_id_id"], name: "index_bookmarks_on_user_id_id"
+    t.index ["recipe_id"], name: "index_bookmarks_on_recipe_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "recipe_genres", force: :cascade do |t|
-    t.integer "recipe_id_id"
-    t.integer "alcohol_id_id"
+    t.integer "recipe_id"
+    t.integer "alcohol_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["alcohol_id_id"], name: "index_recipe_genres_on_alcohol_id_id"
-    t.index ["recipe_id_id"], name: "index_recipe_genres_on_recipe_id_id"
+    t.index ["alcohol_id"], name: "index_recipe_genres_on_alcohol_id"
+    t.index ["recipe_id"], name: "index_recipe_genres_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.integer "user_id_id"
     t.string "name"
     t.text "explanation"
+    t.text "ingredient"
     t.text "procedure"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id_id"], name: "index_recipes_on_user_id_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "user_id_id"
-    t.integer "recipe_id_id"
+    t.integer "user_id"
+    t.integer "recipe_id"
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipe_id_id"], name: "index_reviews_on_recipe_id_id"
-    t.index ["user_id_id"], name: "index_reviews_on_user_id_id"
+    t.index ["recipe_id"], name: "index_reviews_on_recipe_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

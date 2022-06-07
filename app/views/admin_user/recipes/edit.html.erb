@@ -1,2 +1,25 @@
-<h1>AdminUser::Recipes#edit</h1>
-<p>Find me in app/views/admin_user/recipes/edit.html.erb</p>
+<h3>レシピ編集</h3>
+<div class="alcohol_addition">
+  <%= form_with model: @recipe, url: admin_user_recipe_path, method: :patch do |f| %>
+  
+    <p><%= f.file_field :image, accept: "image/*" %></p>
+    
+    <p><%= f.label :name, 'レシピ名' %></p>
+    <%= f.text_field :name %>
+    
+    <p><%= f.label :explanation, 'レシピコメント' %></p>
+    <%= f.text_area :explanation %>
+    
+    <p><%= f.label :ingredient, '食材' %></p>
+    <%= f.text_area :ingredient %>
+    
+    <p><%= f.label :procedure, '調理法' %></p>
+    <%= f.text_area :procedure %>
+    
+    <%= f.submit "変更" %>
+    
+  <% end %>
+  
+  <%= link_to "戻る", admin_user_recipes_path %>
+</div>
+

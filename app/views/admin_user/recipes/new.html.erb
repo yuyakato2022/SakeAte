@@ -1,2 +1,27 @@
-<h1>AdminUser::Recipes#new</h1>
-<p>Find me in app/views/admin_user/recipes/new.html.erb</p>
+<h3>レシピ投稿</h3>
+  <div class="recipe_addition">
+  <%= form_with model: @recipe, url: admin_user_recipes_path, method: :post do |f| %>
+
+    <p><%= f.file_field :image, accept: "image/*" %></p>
+
+    <P><%= f.label :recipe_genre_id,"お酒" %></P>
+    <%= f.collection_select :recipe_genre_id, RecipeGenre.all, :id, :name, include_blank: "選択してください" %>
+
+    <p><%= f.label :name, 'レシピ名' %></p>
+    <%= f.text_field :name %>
+
+    <p><%= f.label :explanation, 'レシピコメント' %></p>
+    <%= f.text_area :explanation %>
+
+    <p><%= f.label :ingredient, '食材' %></p>
+    <%= f.text_area :ingredient %>
+
+    <p><%= f.label :procedure, '調理手順' %></p>
+    <%= f.text_area :procedure %>
+
+    <p><%= f.submit "追加" %>
+  <% end %>
+
+  </div>
+<p><%= link_to "戻る", admin_user_recipes_path %></p>
+

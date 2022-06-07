@@ -1,2 +1,23 @@
-<h1>AdminUser::Alcohols#index</h1>
-<p>Find me in app/views/admin_user/alcohols/index.html.erb</p>
+<h3>お酒追加</h3>
+  <div class="alcohol_addition">
+  <%= form_with model: @alcohol, url: admin_user_alcohols_path, method: :post do |f| %>
+   <%= f.label :name, '種類' %>
+   <%= f.text_field :name %>
+   <%= f.submit "変更" %>
+  <% end %>
+  </div>
+
+<h3>お酒一覧</h3>
+  <table class="alcohol_table">
+    <thead class="alcohol_thead">
+      <th>酒名</th>
+    </thead>
+    <tbody class="alcohol_tobody">
+      <% @alcohols.each do |alcohol| %>
+        <th>
+          <td><%= alcohol.name %></td>
+          <td><%= link_to "編集する", edit_admin_user_alcohol_path(alcohol.id) %></td>
+        </th>
+      <% end %>
+    </tbody>
+  </table>
