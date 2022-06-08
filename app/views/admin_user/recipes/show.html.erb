@@ -1,5 +1,8 @@
-<p><%= image_tag @recipe.image, size: "200x200" %></p>
+<p><%= image_tag @recipe.get_image(200, 200) %></p>
 <p><%= @recipe.name %></p>
+<% @recipe.alcohol.each do |alcohol| %>
+  <%= alcohol.name %>
+<% end %>
 <p><%= @recipe.ingredient%></p>
 <p><%= @recipe.explanation %></p>
 <p><%= @recipe.procedure %></p>

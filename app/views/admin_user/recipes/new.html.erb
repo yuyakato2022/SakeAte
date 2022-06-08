@@ -4,8 +4,8 @@
 
     <p><%= f.file_field :image, accept: "image/*" %></p>
 
-    <P><%= f.label :recipe_genre_id,"お酒" %></P>
-    <%= f.collection_select :recipe_genre_id, RecipeGenre.all, :id, :name, include_blank: "選択してください" %>
+    <P><%= f.label :name,"お酒" %></P>
+    <%= f.collection_select( :alcohol_ids, Alcohol.all, :id, :name, {:prompt => "選択してください"}, {multiple: true} ) %>
 
     <p><%= f.label :name, 'レシピ名' %></p>
     <%= f.text_field :name %>

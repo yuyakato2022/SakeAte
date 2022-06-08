@@ -1,6 +1,7 @@
 class AdminUser::RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
+    @recipe.recipe_genre.build  #recipeに紐づく中間テーブルのインスタンス生成
   end
 
   def index
@@ -9,15 +10,19 @@ class AdminUser::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    
+
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @recipe.recipe_genre.build  #recipeに紐づく中間テーブルのインスタンス生成
   end
 
   def create
     recipe = Recipe.new(recipe_params)
     recipe.save
+    params['recipe']['alcohol_ids'].each do |f| f end
     redirect_to admin_user_recipes_path
   end
 
@@ -36,7 +41,7 @@ class AdminUser::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :explanation, :ingredient, :procedure, :image)
+    params.require(:recipe).permit(:name, :explanation, :ingredient, :procedure, :image, :alcohol_ids)
   end
 
 end

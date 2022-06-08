@@ -4,7 +4,7 @@
 
 <% @recipes.each do |recipe| %>
   <%= link_to admin_user_recipe_path(recipe.id) do %>
-    <p><%= image_tag recipe.image, size: "200x200" %></p>
+    <p><%= image_tag recipe.get_image(200,200) %></p>
     <p>レシピ名: <%= recipe.name %></p>
   <% end %>
     <p>レシピコメント: <%= recipe.explanation %></p>
