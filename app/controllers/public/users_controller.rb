@@ -1,4 +1,7 @@
 class Public::UsersController < ApplicationController
+  
+  layout 'public/application'
+  
   def index
   end
 
@@ -7,4 +10,5 @@ class Public::UsersController < ApplicationController
 
   def quit
   end
+  
 end

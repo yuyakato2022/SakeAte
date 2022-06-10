@@ -1,2 +1,10 @@
-<h1>Public::Recipes#show</h1>
-<p>Find me in app/views/public/recipes/show.html.erb</p>
+<h3>レシピ詳細</h3>
+<p><%= image_tag @recipe.get_image(200, 200) %></p>
+<p>レシピ名：<%= @recipe.name %></p>
+<p>お酒：</p>
+<% @recipe.alcohol.each do |alcohol| %>
+  <%= alcohol.name %>
+<% end %>
+<p><%= @recipe.ingredient%></p>
+<p>食材：<%= @recipe.explanation %></p>
+<p>作り方：<%= @recipe.procedure %></p>

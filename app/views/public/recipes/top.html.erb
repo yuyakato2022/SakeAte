@@ -1,0 +1,5 @@
+<% @alcohols.each do |alcohol| %>
+  <%= link_to public_recipes_path(alcohol_id: alcohol.id) do %>
+    <%= alcohol.name %>
+  <% end %>
+<% end %>

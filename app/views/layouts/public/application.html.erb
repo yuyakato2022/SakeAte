@@ -11,6 +11,56 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <%= link_to root_path do %>
+            <P>LOGO</P>
+          <% end %>
+        </div>
+        <div class="mene">
+          <% if user_signed_in? %>
+            <ul>
+              <li>
+                <%= link_to public_recipes_path do %>
+                 レシピ一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to public_users_path do %>
+                 マイページ
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                 ログアウト
+                <% end %>
+              </li>
+            </ul>
+          <% else %>
+            <ul>
+              <li>
+                <%= link_to new_user_session_path do %>
+                 ログイン
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_registration_path do %>
+                 新規登録
+                <% end %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </nav>
+
+
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer></footer>
   </body>
 </html>

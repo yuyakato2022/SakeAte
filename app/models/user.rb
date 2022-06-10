@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_many :recipe, through: :bookmark, dependent: :destroy
   
   has_many :review, dependent: :destroy
-  has_many :recipe, through: :rebview, dependent: :destroy
    
   has_one_attached :profile_image
 

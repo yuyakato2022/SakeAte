@@ -11,27 +11,49 @@
   </head>
 
   <body>
-    <!--<header>-->
-    <!--  <nav class="navbar">-->
-    <!--    <div class="logo">-->
-    <!--      <P>LOGO</P>-->
-    <!--    </div>-->
-    <!--    <div class="mene">-->
-    <!--      <%#if admin_signed_in? %>-->
-    <!--        <ul>-->
-    <!--          <li-->
-    <!--        </ul>-->
-    <!--      <%#end %>-->
-    <!--    </div>-->
-    <!--  </nav>-->
-      
-      
-    <!--</header>-->
-    
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <%= link_to root_path do %>
+            <P>LOGO</P>
+          <% end %>
+        </div>
+        <div class="mene">
+          <% if admin_user_signed_in? %>
+            <ul>
+              <li>
+                <%= link_to admin_user_recipes_path do %>
+                 レシピ一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_user_alcohols_path do %>
+                 お酒一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_user_users_path do %>
+                 ユーザー一覧
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_admin_user_session_path, method: :delete do %>
+                 ログアウト
+                <% end %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+      </nav>
+
+
+    </header>
+
     <main>
+      <script src="jquery.min.js"></script>
       <%= yield %>
     </main>
-    
+
     <footer></footer>
   </body>
 </html>

@@ -1,4 +1,6 @@
 class AdminUser::AlcoholsController < ApplicationController
+  
+  layout 'admin_user/application'
 
   def index
     @alcohol = Alcohol.new

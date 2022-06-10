@@ -1,19 +1,12 @@
 <p><%= image_tag @recipe.get_image(200, 200) %></p>
-<p><%= @recipe.name %></p>
+<p>レシピ名：<%= @recipe.name %></p>
+<p>お酒：</p>
 <% @recipe.alcohol.each do |alcohol| %>
   <%= alcohol.name %>
 <% end %>
 <p><%= @recipe.ingredient%></p>
-<p><%= @recipe.explanation %></p>
-<p><%= @recipe.procedure %></p>
+<p>食材：<%= @recipe.explanation %></p>
+<p>作り方：<%= @recipe.procedure %></p>
 <p><%= link_to "編集する", edit_admin_user_recipe_path(@recipe) %></p>
 <p><%= link_to "削除する", admin_user_recipe_path(@recipe), method: :delete, "data-confirm" => "本当に削除しますか？" %></p>
 <p><%= link_to "戻る", admin_user_recipes_path %></p>
-
-
-
-
-
-
-
-

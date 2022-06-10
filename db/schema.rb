@@ -111,4 +111,6 @@ ActiveRecord::Schema.define(version: 2022_06_06_121038) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "recipe_genres", "alcohols"
+  add_foreign_key "recipe_genres", "recipes"
 end

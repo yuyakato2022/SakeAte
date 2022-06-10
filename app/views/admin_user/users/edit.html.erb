@@ -1,2 +1,12 @@
-<h1>AdminUser::Users#edit</h1>
-<p>Find me in app/views/admin_user/users/edit.html.erb</p>
+<h3><%= @user.name %>の会員情報</h3>
+<%= @user.id %>
+<%= @user.name %>
+<%= @user.email%>
+
+<h3>会員ステータス</h3>
+<%= form_with model: @user, url: admin_user_user_path(@user), method: :patch do |f| %>
+  <%= f.radio_button :is_deleted, false %> <%= f.label :is_active, "有効" %>
+  <%= f.radio_button :is_deleted, true %> <%= f.label :is_active, "退会" %>
+  <%= f.submit "変更を保存" %>
+<% end %>
+  
