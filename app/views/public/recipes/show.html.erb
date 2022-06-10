@@ -10,8 +10,11 @@
 <p>作り方：<%= @recipe.procedure %></p>
 
 <% @recipe.reviews.each do |review| %>
- <%= review.user.name %>
- <%= review.created_at.strftime('%Y/%m/%d') %><%= review.text %>
+  <%= review.user.name %>
+  <%= review.created_at.strftime('%Y/%m/%d') %><%= review.text %>
+  <% if review.user == current_user %>
+    <%= link_to "コメント削除", public_recipe_review_path(review.recipe, review), method: :delete %>
+  <% end %>
 <% end %>
 
 <%= form_with model: [@recipe, @review], url: public_recipe_reviews_path(@recipe), method: :post do |f| %>

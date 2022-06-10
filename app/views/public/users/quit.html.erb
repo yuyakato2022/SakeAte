@@ -1,2 +1,4 @@
-<h1>Public::Users#quit</h1>
-<p>Find me in app/views/public/users/quit.html.erb</p>
+<h3>退会ページ</h3>
+
+<%= link_to "退会しない", public_user_path, class: 'btn btn-sm btn-success btn-lg mr-4' %>
+<%= link_to "退会する", public_users_withdraw_path, method: :patch, class: 'btn btn-sm btn-danger btn-lg' %>

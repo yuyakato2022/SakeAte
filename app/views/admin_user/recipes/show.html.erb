@@ -1,7 +1,7 @@
 <p><%= image_tag @recipe.get_image(200, 200) %></p>
 <p>レシピ名：<%= @recipe.name %></p>
 <p>お酒：</p>
-<% @recipe.alcohol.each do |alcohol| %>
+<% @recipe.alcohols.each do |alcohol| %>
   <%= alcohol.name %>
 <% end %>
 <p><%= @recipe.ingredient%></p>

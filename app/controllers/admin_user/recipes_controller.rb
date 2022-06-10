@@ -4,7 +4,7 @@ class AdminUser::RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.recipe_genre.build  #recipeに紐づく中間テーブルのインスタンス生成
+    @recipe.recipe_genres.build  #recipeに紐づく中間テーブルのインスタンス生成
   end
 
   def index
@@ -17,7 +17,7 @@ class AdminUser::RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
-    @recipe.recipe_genre.build  #recipeに紐づく中間テーブルのインスタンス生成
+    @recipe.recipe_genres.build  #recipeに紐づく中間テーブルのインスタンス生成
   end
 
   def create

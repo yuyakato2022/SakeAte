@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
     resources :bookmarks, only:[:create, :destroy]
     resource :user, only:[:show, :edit, :update]
+    patch 'users/withdraw' => 'users#withdraw'
+    get 'users/quit' => 'users#quit'
     get "search" => "searches#search"
   end
 

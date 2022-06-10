@@ -9,6 +9,11 @@ class Public::ReviewsController < ApplicationController
     redirect_to public_recipe_path(recipe.id)
   end
 
+  def destroy
+    Review.find(params[:id]).destroy
+    redirect_to request.referer
+  end
+
   private
 
   def review_params

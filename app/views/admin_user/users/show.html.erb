@@ -6,6 +6,7 @@
 
 <% @reviews.each do |review| %>
   <%= review.text %>
+  <%= link_to "コメント削除", public_recipe_review_path(review.recipe, review), method: :delete %>
 <% end %>
 
 <% if @user.is_deleted == true %>
