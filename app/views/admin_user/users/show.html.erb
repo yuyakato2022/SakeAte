@@ -1,7 +1,13 @@
 <h3><%= @user.name %>様の会員情報</h3>
+
 <%= @user.id %>
 <%= @user.name %>
 <%= @user.email%>
+
+<% @reviews.each do |review| %>
+  <%= review.text %>
+<% end %>
+
 <% if @user.is_deleted == true %>
   退会
 <% else %>

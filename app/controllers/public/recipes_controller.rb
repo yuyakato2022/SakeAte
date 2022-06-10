@@ -9,7 +9,7 @@ class Public::RecipesController < ApplicationController
   def index
     if params[:alcohol_id]
       @alcohol = Alcohol.find(params[:alcohol_id])
-      @recipes = @alcohol.recipe
+      @recipes = @alcohol.recipes
     else
       @recipes = Recipe.all
     end
@@ -17,5 +17,6 @@ class Public::RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @review = Review.new
   end
 end

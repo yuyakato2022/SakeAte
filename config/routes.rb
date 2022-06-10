@@ -24,10 +24,10 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :recipes, only:[:index, :show] do
-     resources :reviews, only:[:create, :destroy]
+      resources :reviews, only:[:create, :destroy]
     end
-    resources :bookmark, only:[:create, :destroy]
-    resource :users, only:[:show, :edit, :update]
+    resources :bookmarks, only:[:create, :destroy]
+    resource :user, only:[:show, :edit, :update]
     get "search" => "searches#search"
   end
 

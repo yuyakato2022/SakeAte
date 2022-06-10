@@ -1,12 +1,12 @@
 class Recipe < ApplicationRecord
 	
-	has_many :recipe_genre, dependent: :destroy
-	has_many :alcohol, through: :recipe_genre, dependent: :destroy
+	has_many :recipe_genres, dependent: :destroy
+	has_many :alcohols, through: :recipe_genres, dependent: :destroy
 
-	has_many :bookmark, dependent: :destroy
-	has_many :user, through: :bookmark, dependent: :destroy
+	has_many :bookmarks, dependent: :destroy
+	has_many :users, through: :bookmarks, dependent: :destroy
 
-	has_many :review, dependent: :destroy
+	has_many :reviews, dependent: :destroy
 
 	has_one_attached :image
 

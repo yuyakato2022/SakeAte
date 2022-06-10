@@ -4,6 +4,7 @@ class Public::ReviewsController < ApplicationController
     recipe = Recipe.find(params[:recipe_id])
     review = Review.new(review_params)
     review.user_id = current_user.id
+    review.recipe_id = recipe.id
     review.save
     redirect_to public_recipe_path(recipe.id)
   end

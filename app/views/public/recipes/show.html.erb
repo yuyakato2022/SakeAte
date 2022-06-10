@@ -2,9 +2,19 @@
 <p><%= image_tag @recipe.get_image(200, 200) %></p>
 <p>レシピ名：<%= @recipe.name %></p>
 <p>お酒：</p>
-<% @recipe.alcohol.each do |alcohol| %>
+<% @recipe.alcohols.each do |alcohol| %>
   <%= alcohol.name %>
 <% end %>
 <p><%= @recipe.ingredient%></p>
 <p>食材：<%= @recipe.explanation %></p>
 <p>作り方：<%= @recipe.procedure %></p>
+
+<% @recipe.reviews.each do |review| %>
+ <%= review.user.name %>
+ <%= review.created_at.strftime('%Y/%m/%d') %><%= review.text %>
+<% end %>
+
+<%= form_with model: [@recipe, @review], url: public_recipe_reviews_path(@recipe), method: :post do |f| %>
+  <%= f.text_area :text, rows: '5', placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>
