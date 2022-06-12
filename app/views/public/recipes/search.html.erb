@@ -1,0 +1,12 @@
+<h3>検索結果</h3>
+<% if @recipes.present? %>
+  <% @recipes.each do |recipe| %>
+    <%= link_to public_recipe_path(recipe.id) do %>
+      <p><%= image_tag recipe.get_image(200,200) %></p>
+      <p>レシピ名: <%= recipe.name %></p>
+    <% end %>
+    <p>レシピコメント: <%= recipe.explanation %>
+  <% end %>
+<% else %>
+  <p>検索結果はありません</p>
+<% end %>

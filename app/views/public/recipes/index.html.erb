@@ -7,6 +7,18 @@
   <% end %>
 </h3>
 
+<%= search_form_for @q, url: search_public_recipes_path, method: :get do |f| %>
+  <%= f.text_field :name_cont %>
+  <%= f.submit "検索" %>
+<% end %>
+
+<% @alcohols.each do |alcohol| %>
+  <%= link_to public_recipes_path(alcohol_id: alcohol.id) do %>
+    <%= alcohol.name %>
+  <% end %>
+<% end %>
+
+
 <% @recipes.each do |recipe| %>
   <%= link_to public_recipe_path(recipe.id) do %>
     <p><%= image_tag recipe.get_image(200,200) %></p>
