@@ -1,3 +1,9 @@
 <h3>編集ページ</h3>
 
+<%= form_with model: @user, url: public_user_path, method: :patch do |f| %>
+  <p><%= f.file_field :image, accept: "image/*" %></p>
+  <P><%= f.label :name,"名前" %></P>
+  <p><%= f.text_field :name %></p>
+<% end %>
+
 <%= link_to '退会ページ', public_users_quit_path %>

@@ -5,7 +5,7 @@ class CreateRecipes < ActiveRecord::Migration[6.1]
       t.text :explanation
       t.text :ingredient
       t.text :procedure
-
+      t.float :rate
       t.timestamps
     end
   end

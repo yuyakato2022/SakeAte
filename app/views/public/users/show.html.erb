@@ -1,5 +1,15 @@
 <h3>MY PAGE</h3>
+<p><strong><%= @user.name %>様のお気に入り一覧</strong></p>
 
-<%= @user.name %>
+<% if @bookmark_list.present? %>
+  <% @bookmark_list.each do |recipe| %>
+    <%= link_to public_recipe_path(recipe.id) do %>
+      <%= image_tag recipe.get_image(200,200) %>
+      レシピ名： <%= recipe.name %>
+    <% end %>
+      レシピコメント: <%= recipe.explanation %>
+  <% end %>
+<% end %>
 
-<%= link_to '編集ページ', edit_public_user_path %>
+
+<p><%= link_to '編集ページ', edit_public_user_path %></p>

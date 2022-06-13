@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_121038) do
     t.text "explanation"
     t.text "ingredient"
     t.text "procedure"
+    t.float "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

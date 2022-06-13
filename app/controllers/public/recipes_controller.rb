@@ -33,4 +33,8 @@ private
     @q = Recipe.ransack(params[:q])
   end
 
+  def recipe_params
+    params.require(:recipe).permit(:rate)
+  end
+
 end
