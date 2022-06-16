@@ -1,5 +1,5 @@
 class AdminUser::AlcoholsController < ApplicationController
-  
+
   layout 'admin_user/application'
 
   def index
@@ -12,15 +12,24 @@ class AdminUser::AlcoholsController < ApplicationController
   end
 
   def create
-    alcohol = Alcohol.new(alcohol_params)
-    alcohol.save
-    redirect_to admin_user_alcohols_path
+    @alcohol = Alcohol.new(alcohol_params)
+    if @alcohol.save
+      redirect_to admin_user_alcohols_path
+      flash[:notice] = "お酒　登録完了"
+    else
+      @alcohols = Alcohol.all
+      render :index
+    end
   end
 
   def update
-    alcohol = Alcohol.find(params[:id])
-    alcohol.update(alcohol_params)
-    redirect_to admin_user_alcohols_path
+    @alcohol = Alcohol.find(params[:id])
+    if @alcohol.update(alcohol_params)
+      redirect_to admin_user_alcohols_path
+      flash[:notice] = "変更完了"
+    else
+      render :edit
+    end
   end
 
   private

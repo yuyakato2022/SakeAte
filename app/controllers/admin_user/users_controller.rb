@@ -1,5 +1,6 @@
 class AdminUser::UsersController < ApplicationController
 
+  before_action :set_q,only: [:index, :search]
   layout 'admin_user/application'
 
   def index
@@ -15,19 +16,22 @@ class AdminUser::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  
-  enddef update
+
+  def update
     user = User.find(params[:id])
-    if user.update(user_params)
-      redirect_to admin_user_users_path
-    else
-      render "edit"
-    end
+    user.update(user_params)
+    redirect_to admin_user_users_path
+    flash[:notice] = "ステータス変更完了"
+  end
 
   private
 
   def user_params
     params.require(:user).permit(:is_deleted)
+  end
+
+  def set_q
+    @q_user = User.ransack(params[:q])
   end
 
 end

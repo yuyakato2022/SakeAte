@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    attributes:
+      admin_user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        confirmation: パスワードの確認
+      alcohol:
+        name: 名前
+      recipe:
+        image: 画像
+        name: レシピ名
+        explanation: レシピコメント
+        ingredient: 材料
+        procedure: 調理方法
+        recipe_genres: お酒の種類

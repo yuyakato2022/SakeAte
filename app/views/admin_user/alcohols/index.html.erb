@@ -1,9 +1,10 @@
+<%= render 'layouts/errors', obj: @alcohol %>
 <h3>お酒追加</h3>
   <div class="alcohol_addition">
   <%= form_with model: @alcohol, url: admin_user_alcohols_path, method: :post do |f| %>
    <%= f.label :name, '種類' %>
    <%= f.text_field :name %>
-   <%= f.submit "変更" %>
+   <%= f.submit "登録" %>
   <% end %>
   </div>
 

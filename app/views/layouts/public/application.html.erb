@@ -40,6 +40,11 @@
           <% else %>
             <ul>
               <li>
+                <%= link_to  users_guest_sign_in_path, method: :post do %>
+                  ゲストログイン（閲覧用）
+                <% end %>
+              </li>
+              <li>
                 <%= link_to new_user_session_path do %>
                  ログイン
                 <% end %>
@@ -57,10 +62,10 @@
 
     </header>
 
-    <main>
-      <%= yield %>
-    </main>
+    <div id="flash-success">
+      <%=render "layouts/notice" %>
+    </div>
+    <%= yield %>
 
-    <footer></footer>
   </body>
 </html>

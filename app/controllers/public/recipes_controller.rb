@@ -1,6 +1,6 @@
 class Public::RecipesController < ApplicationController
 
-#   before_action :search
+  before_action :authenticate_user!, except: [:top]
   before_action :set_q,only: [:index, :search]
   layout 'public/application'
 
@@ -31,10 +31,7 @@ class Public::RecipesController < ApplicationController
     @review = Review.new
   end
 
-  def search
-    @recipes = @q.result(distinct: true)
-  end
-
+  
 private
 
   def set_q

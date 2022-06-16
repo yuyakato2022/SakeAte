@@ -1,3 +1,4 @@
+<%= render 'layouts/errors', obj: @recipe %>
 <h3>レシピ投稿</h3>
   <div class="recipe_addition">
   <%= form_with model: @recipe, url: admin_user_recipes_path, method: :post do |f| %>

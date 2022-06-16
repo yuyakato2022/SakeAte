@@ -1,5 +1,7 @@
 class Public::UsersController < ApplicationController
 
+  before_action :authenticate_user!
+
   layout 'public/application'
 
   def show
@@ -13,9 +15,10 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    user = User.find(current_user.id)
-    if user.update(user_params)
-      redirect_to public_user_path(user.id)
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to public_user_path(@user)
+      flash[:notice] = " 編集完了"
     else
       render "edit"
     end

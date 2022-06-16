@@ -10,6 +10,10 @@
       レシピ名： <%= recipe.name %>
     <% end %>
       レシピコメント: <%= recipe.explanation %>
+      <div id= "bookmarks_<%= recipe.id %>" >
+        <%= render "public/bookmarks/bookmark", recipe: recipe %>
+        お気に入り数：<%= recipe.bookmarks.count %>
+      </div>
   <% end %>
 <% end %>
 

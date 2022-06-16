@@ -48,12 +48,11 @@
 
 
     </header>
+    <div id="flash-success">
+      <%=render "layouts/notice" %>
+    </div>
+      
+    <%= yield %>
 
-    <main>
-      <script src="jquery.min.js"></script>
-      <%= yield %>
-    </main>
-
-    <footer></footer>
   </body>
 </html>

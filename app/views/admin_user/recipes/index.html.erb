@@ -2,6 +2,8 @@
 
 <h4><%= link_to 'レシピ追加', new_admin_user_recipe_path %></h4>
 
+<%= render "admin_user/searches/form", q: @q_recipe %>
+
 <% @recipes.each do |recipe| %>
   <%= link_to admin_user_recipe_path(recipe.id) do %>
     <p><%= image_tag recipe.get_image(200,200) %></p>

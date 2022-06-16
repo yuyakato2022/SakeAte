@@ -28,16 +28,13 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :recipes, only:[:index, :show] do
-      collection do
-        get 'search'
-      end
       resources :reviews, only:[:create, :destroy]
       resource :bookmarks, only:[:create, :destroy]
     end
-    
     resource :user, only:[:show, :edit, :update]
     patch 'users/withdraw' => 'users#withdraw'
     get 'users/quit' => 'users#quit'
+    get "search" => "searches#search"
   end
 
 end

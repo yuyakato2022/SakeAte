@@ -7,10 +7,8 @@
   <% end %>
 </h3>
 
-<%= search_form_for @q, url: search_public_recipes_path, method: :get do |f| %>
-  <%= f.text_field :name_cont %>
-  <%= f.submit "検索" %>
-<% end %>
+<%= render "public/searches/form", q: @q %>
+
 <p>
   <%= link_to '新しい順', public_recipes_path(latest: "true")%>
   <%= link_to 'ランキング順', public_recipes_path(star_count: "true") %>
@@ -26,6 +24,23 @@
     <p>レシピコメント: <%= recipe.explanation %></p>
     <div id= "bookmarks_<%= recipe.id %>" >
       <%= render "public/bookmarks/bookmark", recipe: recipe %>
+      お気に入り数：<%= recipe.bookmarks.count %>
     </div>
-    
+
+    <div id="rate_<%= recipe.id %>" class="form-group"></div>
+    <%= recipe.reviews_avg %>
+      <script>
+      $(document).on('turbolinks:load', function() {
+        $('#rate_<%= recipe.id %>').empty();
+        $('#rate_<%= recipe.id %>').raty({
+          size: 20,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= recipe.reviews_avg %>,
+        });
+      });
+      </script>
 <% end %>

@@ -11,10 +11,13 @@
 
 <div id= "bookmarks_<%= @recipe.id %>" >
   <%= render "public/bookmarks/bookmark", recipe: @recipe %>
+  お気に入り数：<%= @recipe.bookmarks.count %>
 </div>
 
 <%= render "public/reviews/review", recipe: @recipe %>
 
 <%= render "public/reviews/form", recipe: @recipe, review: @review %>
+
+<p><%= link_to "戻る", public_recipes_path %></p>
 
 

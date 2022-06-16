@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  
   # URLにadminが含まれるページはadminのみ
   before_action :authenticate_admin_user!, if: :admin_user_url
 

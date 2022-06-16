@@ -1,5 +1,6 @@
 class AdminUser::RecipesController < ApplicationController
 
+  before_action :set_q,only: [:index, :search]
   layout 'admin_user/application'
 
   def new
@@ -21,15 +22,23 @@ class AdminUser::RecipesController < ApplicationController
   end
 
   def create
-    recipe = Recipe.new(recipe_params)
-    recipe.save
-    redirect_to admin_user_recipes_path
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      redirect_to admin_user_recipes_path
+      flash[:notice] = "レシピ登録完了"
+    else
+      render :new
+    end
   end
 
   def update
-    recipe = Recipe.find(params[:id])
-    recipe.update(recipe_params)
-    redirect_to admin_user_recipes_path
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to admin_user_recipes_path
+      flash[:notice] = "編集完了"
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -38,10 +47,16 @@ class AdminUser::RecipesController < ApplicationController
     redirect_to admin_user_recipes_path
   end
 
+
+
   private
 
   def recipe_params
     params.require(:recipe).permit(:name, :explanation, :ingredient, :procedure, :image, alcohol_ids: [])
+  end
+
+  def set_q
+    @q_recipe = Recipe.ransack(params[:q])
   end
 
 end

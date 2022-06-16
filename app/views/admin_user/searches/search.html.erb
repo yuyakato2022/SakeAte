@@ -1,0 +1,41 @@
+<h3>検索結果</h3>
+<% if @recipes.present? %>
+  <% @recipes.each do |recipe| %>
+    <%= link_to admin_user_recipe_path(recipe.id) do %>
+      <p><%= image_tag recipe.get_image(200,200) %></p>
+      <p>レシピ名: <%= recipe.name %></p>
+    <% end %>
+    <p>レシピコメント: <%= recipe.explanation %>
+  <% end %>
+<% elsif @users.present? %>
+  <% @users.each do |user| %>
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick='window.location="<%= '/admin_user/users/' + user.id.to_s %>"' role="link">
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
+          <% if user.is_deleted == true %>
+            <td>退会</td>
+          <% else %>
+            <td>有効</td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+<% else %>
+  <p>検索結果はありません</p>
+<% end %>
+
+<% if @recipes.present? %>
+  <p><%= link_to "戻る", admin_user_recipes_path %></p>
+<% else @users.present? %>
+  <p><%= link_to "戻る", admin_user_users_path %></p>
+<% end %>

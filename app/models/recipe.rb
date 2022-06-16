@@ -12,6 +12,17 @@ class Recipe < ApplicationRecord
 	scope :latest, -> {order(created_at: :desc)}
 	# scope :star_count, -> {left_joins(:reviews).group(:id).order("avg(reviews.rate)DESC")}
 
+	validates :image, presence: true
+	validates :name, length: { in: 2..30 }
+	validates :recipe_genres, presence: true
+	validates :explanation, length: { in: 1..100 }
+	validates :ingredient, length: { maximum: 400 }
+	validates :procedure, length: { maximum: 400 }
+
+	def reviews_avg
+		reviews.average(:rate)
+	end
+
 	def get_image(width, height)
 	  unless image.attached?
 	    file_path = Rails.root.join('app/assets/images/no_image.jpg')
