@@ -11,8 +11,6 @@
       <tr onclick='window.location="<%= '/admin_user/users/' + user.id.to_s %>"' role="link">
         <td><%= user.id %></td>
         <td><%= user.name %></td>
-      </tr>
-      <tr>
         <% if user.is_deleted == true %>
           <td>退会</td>
         <% else %>

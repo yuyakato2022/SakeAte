@@ -1,7 +1,3 @@
 <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
 
-<% @alcohols.each do |alcohol| %>
-  <%= link_to public_recipes_path(alcohol_id: alcohol.id) do %>
-    <%= alcohol.name %>
-  <% end %>
-<% end %>
+<%= render "public/recipes/recipe_genre", alcohols: @alcohols %>

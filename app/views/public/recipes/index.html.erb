@@ -11,13 +11,12 @@
   <%= f.text_field :name_cont %>
   <%= f.submit "検索" %>
 <% end %>
+<p>
+  <%= link_to '新しい順', public_recipes_path(latest: "true")%>
+  <%= link_to 'ランキング順', public_recipes_path(star_count: "true") %>
+</p>
 
-<% @alcohols.each do |alcohol| %>
-  <%= link_to public_recipes_path(alcohol_id: alcohol.id) do %>
-    <%= alcohol.name %>
-  <% end %>
-<% end %>
-
+<%= render "public/recipes/recipe_genre", alcohols: @alcohols %>
 
 <% @recipes.each do |recipe| %>
   <%= link_to public_recipe_path(recipe.id) do %>
@@ -25,6 +24,8 @@
     <p>レシピ名: <%= recipe.name %></p>
   <% end %>
     <p>レシピコメント: <%= recipe.explanation %></p>
-
-  
+    <div id= "bookmarks_<%= recipe.id %>" >
+      <%= render "public/bookmarks/bookmark", recipe: recipe %>
+    </div>
+    
 <% end %>

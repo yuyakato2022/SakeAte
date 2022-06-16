@@ -81,7 +81,6 @@ ActiveRecord::Schema.define(version: 2022_06_06_121038) do
     t.text "explanation"
     t.text "ingredient"
     t.text "procedure"
-    t.float "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -90,6 +89,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_121038) do
     t.integer "user_id"
     t.integer "recipe_id"
     t.text "text"
+    t.float "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipe_id"], name: "index_reviews_on_recipe_id"

@@ -1,5 +1,7 @@
 <h3>MY PAGE</h3>
+<%= image_tag @user.get_profile_image(90,70) %>
 <p><strong><%= @user.name %>様のお気に入り一覧</strong></p>
+
 
 <% if @bookmark_list.present? %>
   <% @bookmark_list.each do |recipe| %>

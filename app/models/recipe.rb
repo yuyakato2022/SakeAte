@@ -9,6 +9,9 @@ class Recipe < ApplicationRecord
 
 	has_one_attached :image
 
+	scope :latest, -> {order(created_at: :desc)}
+	# scope :star_count, -> {left_joins(:reviews).group(:id).order("avg(reviews.rate)DESC")}
+
 	def get_image(width, height)
 	  unless image.attached?
 	    file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -18,7 +21,7 @@ class Recipe < ApplicationRecord
 	end
 
 	#bookmarkテーブルにユーザーidが存在しているかを検証
-	def bookmarked_by?(user)
+  def bookmarked_by?(user)
     bookmarks.exists?(user_id: user.id)
   end
 

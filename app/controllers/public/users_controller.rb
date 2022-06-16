@@ -9,6 +9,16 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(current_user.id)
+  end
+
+  def update
+    user = User.find(current_user.id)
+    if user.update(user_params)
+      redirect_to public_user_path(user.id)
+    else
+      render "edit"
+    end
   end
 
   def quit
@@ -26,6 +36,10 @@ class Public::UsersController < ApplicationController
       flash[:notice] = " 退会に失敗しました"
       render :show
      end
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :profile_image)
   end
 
 end

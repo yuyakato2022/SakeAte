@@ -1,0 +1,24 @@
+<%= form_with model: [recipe, review], url: public_recipe_reviews_path(@recipe), method: :post do |f| %>
+  <%= f.label :text %>
+  <%= f.text_area :text, rows: '5', placeholder: "コメントをここに" %>
+
+  <div class="form-group" id="star">
+    <%= f.label :rate %>
+    <%= f.hidden_field :rate, id: :review_star, class:'form-control' %>
+  </div>
+
+  <script>
+  $(document).on('turbolinks:load', function() {
+    $('#star').empty();
+    $('#star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'review[rate]',
+      half: true,
+    });
+  })
+  </script>
+  <%= f.submit "送信する" %>
+<% end %>

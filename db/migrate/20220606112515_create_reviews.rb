@@ -4,6 +4,8 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.references :user
       t.references :recipe
       t.text :text
+      t.float :rate
+
       t.timestamps
     end
   end
