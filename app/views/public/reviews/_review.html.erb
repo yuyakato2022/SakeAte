@@ -1,9 +1,13 @@
 <% recipe.reviews.each do |review| %>
-  <%= review.user.name %>
-  <%= review.created_at.strftime('%Y/%m/%d') %><%= review.text %>
-  <% if review.user == current_user %>
-    <%= link_to "コメント削除", public_recipe_review_path(review.recipe, review), method: :delete %>
-  <% end %>
-  
-  <%= render "public/reviews/star", review: review %>
+  <div class="border border-dark mb-3">
+    <div class="bg-white p-3">
+      <%= image_tag review.user.get_profile_image(90,70), class:"mt-3 rounded-circle" %>
+      <%= review.user.name %>
+      <%= render "public/reviews/star", review: review %>
+      <%= review.created_at.strftime('%Y/%m/%d') %><%= review.text %>
+      <% if review.user == current_user %>
+        <%= link_to "コメント削除", public_recipe_review_path(review.recipe, review), method: :delete,class: 'text-dark' %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

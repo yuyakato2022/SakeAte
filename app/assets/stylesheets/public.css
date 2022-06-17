@@ -1,0 +1,22 @@
+main {
+  background-color:#666666;background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 50%);
+}
+
+
+
+.title {
+  text-align: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+  padding: 10px 0;
+  background: #89c7de;
+  color: #fff;
+  text-align: center;
+}
