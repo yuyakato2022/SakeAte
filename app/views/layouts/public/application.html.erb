@@ -12,60 +12,63 @@
 
   <body>
     <header>
-      <nav class="navbar">
-        <div class="logo">
-          <%= link_to root_path do %>
-            <P>LOGO</P>
-          <% end %>
+      <nav class="navbar navbar-expand-md navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand" href="/"><%= image_tag 'logo', :size =>'100x60' %></a>
         </div>
-        <div class="mene">
-          <% if user_signed_in? %>
-            <ul>
-              <li>
-                <%= link_to public_recipes_path do %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav ">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to public_recipes_path,class: 'nav-link text-dark' do %>
                  レシピ一覧
                 <% end %>
               </li>
-              <li>
-                <%= link_to public_user_path do %>
+              <li class="nav-item">
+                <%= link_to public_user_path,class: 'nav-link text-dark' do %>
                  マイページ
                 <% end %>
               </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
+              <li class="nav-item">
+                <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-dark' do %>
                  ログアウト
                 <% end %>
               </li>
-            </ul>
-          <% else %>
-            <ul>
-              <li>
-                <%= link_to  users_guest_sign_in_path, method: :post do %>
-                  ゲストログイン（閲覧用）
-                <% end %>
-              </li>
-              <li>
-                <%= link_to new_user_session_path do %>
-                 ログイン
-                <% end %>
-              </li>
-              <li>
-                <%= link_to new_user_registration_path do %>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
                  新規登録
                 <% end %>
               </li>
+              <li class="nav-item">
+                <%= link_to new_user_session_path,class: 'nav-link text-dark' do %>
+                 ログイン
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to  users_guest_sign_in_path, method: :post,class: 'nav-link text-dark' do %>
+                 ゲストログイン
+                <% end %>
+              </li>
+            <% end %>
             </ul>
-          <% end %>
+          </div>
         </div>
       </nav>
-
-
     </header>
 
-    <div id="flash-success">
-      <%=render "layouts/notice" %>
-    </div>
-    <%= yield %>
+    <main>
+      <div id="flash-success">
+        <%=render "layouts/notice" %>
+      </div>
+      <%= yield %>
+    </main>
+
+    <footer class="text-center">©sakeate</footer>
 
   </body>
 </html>
