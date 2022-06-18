@@ -17,7 +17,6 @@ class Public::RecipesController < ApplicationController
     elsif params[:latest]
       @recipes = Recipe.latest
     elsif params[:star_count]
-      # @recipes = Recipe.star_count
       rank = Review.group(:recipe_id).order('avg(rate) desc')
       @recipes = Recipe.find(rank.pluck(:recipe_id))
     else

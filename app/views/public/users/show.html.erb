@@ -1,21 +1,39 @@
-<h3>MY PAGE</h3>
-<%= image_tag @user.get_profile_image(90,70), class:"mt-3 rounded-circle" %>
-<p><strong><%= @user.name %>様のお気に入り一覧</strong></p>
-
-
-<% if @bookmark_list.present? %>
-  <% @bookmark_list.each do |recipe| %>
-    <%= link_to public_recipe_path(recipe.id) do %>
-      <%= image_tag recipe.get_image(200,200) %>
-      レシピ名： <%= recipe.name %>
-    <% end %>
-      レシピコメント: <%= recipe.explanation %>
-      <div id= "bookmarks_<%= recipe.id %>" >
-        <%= render "public/bookmarks/bookmark", recipe: recipe %>
-        お気に入り数：<%= recipe.bookmarks.count %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 mt-5 mb-3 text-center">
+      <h2><strong>MY PAGE</strong></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 mb-3 text-center">
+      <%= link_to edit_public_user_path do %>
+        <%= image_tag @user.get_profile_image(100,100), class:"rounded-circle" %>
+        <h5>
+          <i class="fas fa-edit text-success"></i>
+        </h5>
+      <% end %>
+      <h4><strong><%= @user.name %>様のお気に入り一覧</strong></h4>
+    </div>
+  </div>
+  <div class="row">
+    <% if @bookmark_list.present? %>
+      <% @bookmark_list.each do |recipe| %>
+      <div class="col-lg-4  mb-5 text-center">
+        <div class="user-bg">
+          <%= link_to public_recipe_path(recipe.id),class: 'text-link' do %>
+            <p><%= image_tag recipe.get_image(200,200) ,class: 'image-my-page' %></p>
+            <p><strong>レシピ名</strong></p>
+             <%= recipe.name %>
+          <% end %>
+          <sapn id= "bookmarks_<%= recipe.id %>" >
+            <%= render "public/bookmarks/bookmark", recipe: recipe %>
+          </span>
+        </div>
       </div>
-  <% end %>
-<% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
 
-<p><%= link_to '編集ページ', edit_public_user_path %></p>
+

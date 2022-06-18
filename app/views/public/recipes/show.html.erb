@@ -1,33 +1,55 @@
 <div class="container">
-  <div class="row mt-5 mb-5 mx-auto">
-    <h2 class="title"><strong><%= @recipe.name %></strong></h2>
-  </div>
-
-  <div class="row mx-auto">
-    <p><%= image_tag @recipe.get_image(400,400) %></p>
-  </div>
-
-  <div class="row mx-auto">
-    <div id= "bookmarks_<%= @recipe.id %>" >
-      <%= render "public/bookmarks/bookmark", recipe: @recipe %>
-    </div></br>
-
-    <% @recipe.alcohols.each do |alcohol| %>
-      <p><strong>合うお酒</strong>：<%= alcohol.name %></p>
-    <% end %>
-    <p><%= @recipe.explanation%></p>
-    <p><strong>食材</strong>：<%= @recipe.ingredient %></p>
-    <p><strong>作り方</strong>：<%= @recipe.procedure %></p>
-  </div>
-
-  <div class="row mx-auto">
-    <div class="col-auto">
-      <%= render "public/reviews/form", recipe: @recipe, review: @review %>
-      <p><%= link_to "戻る", public_recipes_path,class: 'text-dark' %></p>
+  
+  <div class="row">
+    <div class="col-lg-12 mt-5 mb-1 p-2 text-center">
+      <h2>
+        <strong><%= @recipe.name %></strong>
+        <span id= "bookmarks_<%= @recipe.id %>" >
+          <%= render "public/bookmarks/bookmark", recipe: @recipe %>
+        </span>
+      </h2>
+      <% @recipe.alcohols.each do |alcohol| %>
+        <p><strong>合うお酒</strong>：<%= safe_join(alcohol.name.split("\n"),tag(:br)) %></p>
+      <% end %>
     </div>
-    <div class="col-auto mr-auto">
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 mb-3 text-center">
+      <%= image_tag @recipe.get_image(400,400),class: "image-show" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <p class="comment-show"><%= @recipe.explanation %></p>
+    </div>
+  </div>
+
+  <div class="row mx-auto">
+    <div class="col-lg-6">
+      <p class="text-bg"><strong>食材</strong></br><%= safe_join(@recipe.ingredient.split("\n"),tag(:br)) %></p>
+    </div>
+    <div class="col-lg-6">
+      <p class="text-bg"><strong>作り方</strong></br><%= safe_join(@recipe.procedure.split("\n"),tag(:br)) %></p>
+    </div>
+  </div>
+
+  <div class="row mx-auto mt-5">
+    <div class="col-lg-4">
+      <%= render "public/reviews/form", recipe: @recipe, review: @review %>
+    </div>
+    <div class="col-lg-8">
       <%= render "public/reviews/review", recipe: @recipe %>
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-lg-12 m-3 text-center">
+      <%= link_to public_recipes_path, class: 'text-link' do %>
+        <strong><i class="fas fa-chevron-circle-left"></i>一覧ページに戻る<i class="fas fa-chevron-circle-left"></i></strong>
+      <% end %>
+    </div>
+  </div>
+  
 </div>

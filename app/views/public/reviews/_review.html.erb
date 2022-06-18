@@ -1,12 +1,35 @@
 <% recipe.reviews.each do |review| %>
-  <div class="border border-dark mb-3">
+  <div class="border border-dark mb-1">
     <div class="bg-white p-3">
-      <%= image_tag review.user.get_profile_image(90,70), class:"mt-3 rounded-circle" %>
-      <%= review.user.name %>
-      <%= render "public/reviews/star", review: review %>
-      <%= review.created_at.strftime('%Y/%m/%d') %><%= review.text %>
+      <span>
+        <%= image_tag review.user.get_profile_image(90,70), class:"mt-3 rounded-circle" %>
+        <%= review.user.name %></br>
+        <%= review.created_at.strftime('%Y/%m/%d') %>
+      </span>
+    </div>
+    <div class="bg-light text-dark p-2">
+      <%= review.text %>
+      <div id="rate<%= review.id %>"></div>
+      <script>
+      $(document).on('turbolinks:load', function() {
+        $('#rate<%= review.id %>').empty();
+        $('#rate<%= review.id %>').raty({
+          size: 20,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= review.rate %>,
+        });
+      });
+      </script>
       <% if review.user == current_user %>
-        <%= link_to "コメント削除", public_recipe_review_path(review.recipe, review), method: :delete,class: 'text-dark' %>
+        <p>
+          <%= link_to public_recipe_review_path(review.recipe, review), method: :delete do %>
+            <i class="fas fa-trash-alt text-dark"></i>
+          <% end %>
+        </p>
       <% end %>
     </div>
   </div>

@@ -1,6 +1,8 @@
 <%= form_with model: [recipe, review], url: public_recipe_reviews_path(@recipe), method: :post do |f| %>
-  <%= f.label :text %>
-  <%= f.text_area :text, rows: '5', placeholder: "コメントをここに" %>
+  <div class="form-group">
+    <%= f.label :text,"コメント" %>
+    <%= f.text_area :text, rows: '5', placeholder: "コメントをここに", class: 'form-control' %>
+  </div>
 
   <div class="form-group" id="star">
     <%= f.label :rate %>

@@ -19,8 +19,9 @@ class Recipe < ApplicationRecord
 	validates :ingredient, length: { maximum: 400 }
 	validates :procedure, length: { maximum: 400 }
 
+#平均値の記述 BigDecimalから整数少数へ変換
 	def reviews_avg
-		reviews.average(:rate)
+		reviews.average(:rate).to_s.to_f.round(1)
 	end
 
 	def get_image(width, height)

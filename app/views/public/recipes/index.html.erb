@@ -1,61 +1,69 @@
-
-  <div class="row mr-auto">
-    <h2><strong>
-      <% if @alcohol.present? %>
-        <%= @alcohol.name %>に合うおすすめレシピ
-      <% else %>
-        すべてのレシピ
-      <% end %>
-    </strong></h2>
-  </div>
+<div class="container">
   <div class="row">
-    <div class="col-auto mr-auto">
+    <div class="col-lg-12 mt-5 mb-3 text-center">
+      <h2><strong>
+        <% if @alcohol.present? %>
+          <%= @alcohol.name %>に合うおすすめレシピ
+        <% else %>
+          すべてのレシピ
+        <% end %>
+      </strong></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
       <h4>お酒の種類</h4>
       <%= render "public/recipes/recipe_genre", alcohols: @alcohols %>
     </div>
-     <div class="col-auto">
+    <div class="col-lg-6 text-right">
       <%= render "public/searches/form", q: @q %>
-      <p><%= link_to '新しい順', public_recipes_path(latest: "true")%> | <%= link_to 'ランキング順', public_recipes_path(star_count: "true") %></p>
+      <%= link_to '新しい順', public_recipes_path(latest: "true"), class: "btn btn-outline-danger" %>
+      <%= link_to 'ランキング順', public_recipes_path(star_count: "true"), class: "btn btn-outline-warning" %>
     </div>
   </div>
 
 
-<div class="card-list-container">
-  <% @recipes.each do |recipe| %>
-  <div class="card w-50 mx-auto text-center mt-4 shadow-lg">
-    <%= link_to public_recipe_path(recipe.id),class: 'text-dark' do %>
-      <%= image_tag recipe.get_image(400,400), class: "card-img-top" %>
-    <div class="card-body">
-      <h5 class="card-title"><strong><%= recipe.name %></strong></h5>
-      <p class="card-text"><%= recipe.explanation %></p>
-    </div>
-    <% end %>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <div id= "bookmarks_<%= recipe.id %>" >
-          <%= render "public/bookmarks/bookmark", recipe: recipe %>
+  <div class="row">
+    <% @recipes.each do |recipe| %>
+      <div class="col-lg-6 mb-5">
+        <div class="card w-100 text-center mt-4 shadow-lg">
+          <%= link_to public_recipe_path(recipe.id),class: 'text-link' do %>
+            <%= image_tag recipe.get_image(400,400),class: 'card-img-top' %>
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= recipe.name %></strong></h5>
+            <p class="card-text"><%= recipe.explanation %></p>
+          </div>
+          <% end %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span id= "bookmarks_<%= recipe.id %>" >
+                <%= render "public/bookmarks/bookmark", recipe: recipe %>
+              </span>
+              お気に入り数：<%= recipe.bookmarks.count %> ｜
+              レビュー数：<%= recipe.reviews.count %>
+            </li>
+            <li class="list-group-item">
+              <span>評価：<%= recipe.reviews_avg %>点</span>：
+              <span id="rate_<%= recipe.id %>" class="form-group"></span>
+                <script>
+                $(document).on('turbolinks:load', function() {
+                  $('#rate_<%= recipe.id %>').empty();
+                  $('#rate_<%= recipe.id %>').raty({
+                    size: 20,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= recipe.reviews_avg %>,
+                  });
+                });
+                </script>
+            </li>
+          </ul>
         </div>
-        レビュー数：<%= recipe.reviews.count %>
-      </li>
-      <li class="list-group-item">
-        <span>評価：<%= recipe.reviews_avg %>点</span>：
-        <span id="rate_<%= recipe.id %>" class="form-group"></span>
-          <script>
-          $(document).on('turbolinks:load', function() {
-            $('#rate_<%= recipe.id %>').empty();
-            $('#rate_<%= recipe.id %>').raty({
-              size: 20,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half: true,
-              readOnly: true,
-              score: <%= recipe.reviews_avg %>,
-            });
-          });
-          </script>
-      </li>
-    </ul>
-  </div>
-  <% end %>
+      </div>
+    <% end %>
+   </div>
 </div>
