@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  devise_for :admin_users, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin_user, controllers: {
     sessions: "admin_user/sessions"
   }
 

@@ -1,9 +1,5 @@
-
 header {
   font-family: serif;
-  position: sticky;
-  top: 0;
-  display: flxed;
 }
 
 main {
@@ -62,4 +58,24 @@ footer {
   text-align: center;
   background-image: linear-gradient(to top, #e6b980 0%, #eacda3 100%);
   font-family: serif;
+}
+
+.image1 {
+  background-image: url(beer.jpg);
+}
+.image2 {
+  background-image: url(highball.jpg);
+}
+.image3 {
+  background-image: url(nihonshu.jpeg);
+}
+.image4 {
+  background-image: url(wine.jpg);
+}
+.image5 {
+  background-image: url(logo.png);
+}
+
+#ggg{
+  height: 500px;
 }
