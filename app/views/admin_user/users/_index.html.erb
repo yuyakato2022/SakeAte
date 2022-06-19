@@ -1,0 +1,24 @@
+<div class="bg-light">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+  <% users.each do |user| %>
+    <tbody>
+      <tr onclick='window.location="<%= '/admin_user/users/' + user.id.to_s %>"' role="link">
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <% if user.is_deleted == true %>
+          <td>退会</td>
+        <% else %>
+          <td>有効</td>
+        <% end %>
+      </tr>
+    </tbody>
+  <% end %>
+  </table>
+</div>

@@ -1,17 +1,71 @@
-<h3><%= @user.name %>様の会員情報</h3>
+<div class="container">
 
-<%= @user.id %>
-<%= @user.name %>
-<%= @user.email%>
+  <div class="row">
+    <div class="col-lg-12 mt-3 mb-3 text-center">
+      <h2><strong><%= @user.name %>様の会員情報</strong></h2>
+    </div>
+  </div>
 
-<% @reviews.each do |review| %>
-  <%= review.text %>
-  <%= link_to "コメント削除", public_recipe_review_path(review.recipe, review), method: :delete %>
-<% end %>
+  <div class="row">
+    <div class="col-lg-12 mt-3 mb-3 text-center">
+      <div class="bg-light">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>会員ID</th>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+              <th>ステータス変更画面</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @user.id %></td>
+              <td><%= @user.name %></td>
+              <td><%= @user.email %></td>
+              <% if @user.is_deleted == true %>
+                <td>退会</td>
+              <% else %>
+                <td>有効</td>
+              <% end %>
+              <td>
+                <%= link_to edit_admin_user_user_path(@user) do %>
+                  <i class="fas fa-edit text-success"></i>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-<% if @user.is_deleted == true %>
-  退会
-<% else %>
-  有効
-<% end%>
-<%= link_to '会員変更画面', edit_admin_user_user_path(@user) %>
+  <div class="row">
+    <% @reviews.each do |review| %>
+      <div class="col-lg-4 mt-3 mb-3">
+        <div class="bg-light p-2">
+          <%= link_to public_recipe_review_path(review.recipe, review), class: "text-dark", method: :delete do %>
+              <p><i class="fas fa-trash-alt"></i>削除</p>
+            <% end %>
+          <%= review.text %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 mt-3 mb-3 text-center">
+      <%= link_to admin_user_users_path, class: 'text-link' do %>
+        <strong><i class="fas fa-chevron-circle-left"></i>一覧ページに戻る<i class="fas fa-chevron-circle-left"></i></strong>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+

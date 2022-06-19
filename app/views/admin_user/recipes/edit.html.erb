@@ -1,29 +1,68 @@
-<%= render 'layouts/errors', obj: @recipe %>
-<h3>レシピ編集</h3>
-<div class="alcohol_addition">
-  <%= form_with model: @recipe, url: admin_user_recipe_path, method: :patch do |f| %>
+<div class="container">
 
-    <p><%= f.file_field :image, accept: "image/*" %></p>
+  <div class="row">
+    <div class="col-lg-12 mt-3 mb-3 text-center">
+      <h2><strong>レシピ編集</strong></h2>
+    </div>
+  </div>
 
-    <P><%= f.label :name,"お酒" %></P>
-    <%= f.collection_check_boxes(:alcohol_ids, Alcohol.all, :id, :name, include_hidden: false ) %>
+  <%= render 'layouts/errors', obj: @recipe %>
+    <%= form_with model: @recipe, url: admin_user_recipe_path, method: :patch do |f| %>
 
-    <p><%= f.label :name, 'レシピ名' %></p>
-    <%= f.text_field :name %>
+    <div class="row">
+      <div class="col-lg-12 mb-3 text-center">
+        <p><strong><%= f.label :image, "レシピ画像" %></strong></p>
+        <%= f.file_field :image, class: "col-4",  accept: "image/*" %>
+      </div>
+    </div>
 
-    <p><%= f.label :explanation, 'レシピコメント' %></p>
-    <%= f.text_area :explanation %>
+    <div class="row">
+      <div class="col-lg-12 mb-3 text-center">
+        <p><strong><%= f.label :name,"レシピ名"%></strong></p>
+        <%= f.text_field :name, class: "col-lg-6" %>
+      </div>
+    </div>
 
-    <p><%= f.label :ingredient, '食材' %></p>
-    <%= f.text_area :ingredient %>
+    <div class="row">
+      <div class="col-lg-12 mb-3 text-center">
+        <p><strong><%= f.label :name,"お酒" %></strong></p>
+        <%= f.collection_check_boxes(:alcohol_ids, Alcohol.all, :id, :name, include_hidden: false ) %>
+      </div>
+    </div>
 
-    <p><%= f.label :procedure, '調理法' %></p>
-    <%= f.text_area :procedure %>
+    <div class="row">
+      <div class="col-lg-12 mb-3 text-center">
+        <p><strong><%= f.label :explanation, "レシピコメント" %></strong></p>
+        <%= f.text_area :explanation, size: "70x5" %>
+      </div>
+    </div>
 
-    <%= f.submit "変更" %>
 
+    <div class="row">
+      <div class="col-lg-6 mb-3 text-center">
+        <p><strong><%= f.label :ingredient, "食材" %></strong></p>
+        <%= f.text_area :ingredient, size: "70x15" %>
+      </div>
+      <div class="col-lg-6 mb-3 text-center">
+        <p><strong><%= f.label :procedure, "調理法" %></strong></p>
+        <%= f.text_area :procedure, size: "70x15" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mb-3 text-center">
+        <%= f.submit '編集登録' %>
+      </div>
+    </div>
   <% end %>
 
-  <%= link_to "戻る", admin_user_recipes_path %>
+  <div class="row">
+    <div class="col-lg-12 mt-3 mb-3 text-center">
+      <%= link_to admin_user_recipes_path, class: 'text-link' do %>
+        <strong><i class="fas fa-chevron-circle-left"></i>一覧ページに戻る<i class="fas fa-chevron-circle-left"></i></strong>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
