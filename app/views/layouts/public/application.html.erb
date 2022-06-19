@@ -6,69 +6,73 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+   
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-md navbar-light bg-white">
-        <div class="container">
-          <a class="navbar-brand" href="/"><%= image_tag 'logo', :size =>'100x60' %></a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="container">
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav ">
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to public_recipes_path,class: 'nav-link text-dark' do %>
-                 レシピ一覧
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to public_user_path,class: 'nav-link text-dark' do %>
-                 マイページ
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-dark' do %>
-                 ログアウト
-                <% end %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
-                 新規登録
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to new_user_session_path,class: 'nav-link text-dark' do %>
-                 ログイン
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to  users_guest_sign_in_path, method: :post,class: 'nav-link text-dark' do %>
-                 ゲストログイン
-                <% end %>
-              </li>
-            <% end %>
-            </ul>
+    <div class="footerFixed">
+      <header>
+        <nav class="navbar navbar-expand-md navbar-light bg-white">
+          <div class="container">
+            <a class="navbar-brand" href="/"><%= image_tag 'logo', :size =>'100x60' %></a>
           </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="container">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav ">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to public_recipes_path,class: 'nav-link text-dark' do %>
+                   レシピ一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to public_user_path,class: 'nav-link text-dark' do %>
+                   マイページ
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-dark' do %>
+                   ログアウト
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to new_user_registration_path,class: 'nav-link text-dark' do %>
+                   新規登録
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_session_path,class: 'nav-link text-dark' do %>
+                   ログイン
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to  users_guest_sign_in_path, method: :post,class: 'nav-link text-dark' do %>
+                   ゲストログイン
+                  <% end %>
+                </li>
+              <% end %>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <div id="flash-success">
+          <%=render "layouts/notice" %>
         </div>
-      </nav>
-    </header>
+        <%= yield %>
+      </main>
 
-    <main>
-      <div id="flash-success">
-        <%=render "layouts/notice" %>
-      </div>
-      <%= yield %>
-    </main>
+      <footer id="footer">©sakeate</footer>
 
-    <footer>©sakeate</footer>
-
+    </div>
   </body>
 </html>
