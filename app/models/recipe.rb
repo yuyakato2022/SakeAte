@@ -10,7 +10,6 @@ class Recipe < ApplicationRecord
 	has_one_attached :image
 
 	scope :latest, -> {order(created_at: :desc)}
-	# scope :star_count, -> {left_joins(:reviews).group(:id).order("avg(reviews.rate)DESC")}
 
 	validates :image, presence: true
 	validates :name, length: { in: 2..30 }

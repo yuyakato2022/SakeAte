@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12 mt-5 mb-3 text-center">
+      <h3>今日はどのお酒でたのしみますか？</h3>
       <div id="ggg">
         <div id="theTarget">
           <div class="image1"></div>
@@ -10,12 +11,11 @@
           <div class="image5"></div>
         </div>
       </div>
-      <h3>今日はどのお酒でたのしみますか？</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12 mt-5 mb-3 text-center">
-      <%= render "public/recipes/recipe_genre", alcohols: @alcohols %>
+      <h3><%= render "public/recipes/recipe_genre", alcohols: @alcohols %></h3>
     </div>
   </div>
 </div>

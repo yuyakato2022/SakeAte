@@ -6,8 +6,8 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:recipe_id)
-    @bookmark_list = Recipe.find(bookmarks)
+    recipes = Recipe.where(id: @user.bookmarks.pluck(:recipe_id))
+    @bookmark_list = recipes.page(params[:page]).per(10)
   end
 
   def edit

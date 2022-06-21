@@ -9,7 +9,7 @@ class AdminUser::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.page(params[:page]).per(4)
   end
 
   def show

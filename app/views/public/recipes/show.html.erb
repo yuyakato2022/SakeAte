@@ -1,5 +1,5 @@
 <div class="container">
-  
+
   <div class="row">
     <div class="col-lg-12 mt-5 mb-1 p-2 text-center">
       <h2>
@@ -8,8 +8,9 @@
           <%= render "public/bookmarks/bookmark", recipe: @recipe %>
         </span>
       </h2>
+      <strong>合うお酒</strong>
       <% @recipe.alcohols.each do |alcohol| %>
-        <p><strong>合うお酒</strong>：<%= safe_join(alcohol.name.split("\n"),tag(:br)) %></p>
+        /<%= safe_join(alcohol.name.split("\n"),tag(:br)) %>
       <% end %>
     </div>
   </div>
@@ -51,5 +52,4 @@
       <% end %>
     </div>
   </div>
-  
 </div>

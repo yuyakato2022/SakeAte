@@ -10,19 +10,20 @@ class Public::RecipesController < ApplicationController
 
   def index
     @alcohols = Alcohol.all
-    
+
     if params[:alcohol_id]
       @alcohol = Alcohol.find(params[:alcohol_id])
-      @recipes = @alcohol.recipes
+      @recipes = @alcohol.recipes.page(params[:page]).per(10)
     elsif params[:latest]
-      @recipes = Recipe.latest
+      @recipes = Recipe.latest.page(params[:page]).per(10)
     elsif params[:star_count]
       rank = Review.group(:recipe_id).order('avg(rate) desc')
-      @recipes = Recipe.find(rank.pluck(:recipe_id))
+      @recipes = Recipe.where(id: rank.pluck(:recipe_id))
+      @recipes = @recipes.page(params[:page]).per(10)
     else
-      @recipes = Recipe.all
+      @recipes = Recipe.all.page(params[:page]).per(10)
     end
-    
+
   end
 
   def show
@@ -30,11 +31,11 @@ class Public::RecipesController < ApplicationController
     @review = Review.new
   end
 
-  
+
 private
 
   def set_q
     @q = Recipe.ransack(params[:q])
   end
-  
+
 end
