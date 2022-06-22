@@ -76,19 +76,19 @@ footer {
 }
 
 .image1 {
-  background-image: url(beer.jpg);
+  background-image: image-url("beer.jpg");
 }
 .image2 {
-  background-image: url(highball.jpg);
+  background-image: image-url("highball.jpg");
 }
 .image3 {
-  background-image: url(nihonshu.jpeg);
+  background-image: image-url("nihonshu.jpeg");
 }
 .image4 {
-  background-image: url(wine.jpg);
+  background-image: image-url("wine.jpg");
 }
 .image5 {
-  background-image: url(logo.png);
+  background-image: image-url("logo.png");
 }
 
 #ggg{
