@@ -5,8 +5,11 @@ class AdminUser::SearchesController < ApplicationController
   before_action :set_q,only: [:index, :search]
 
   def search
-    @recipes = @q_recipe.result(distinct: true)
-    @users = @q_user.result(distinct: true)
+    if params[:q][:view_name] == "user"
+      @users = @q_user.result(distinct: true)
+    else
+      @recipes = @q_recipe.result(distinct: true)
+    end
   end
 
   private
