@@ -18,8 +18,9 @@
       <h2>
         <strong><%= @recipe.name %></strong>
       </h2>
+      <strong>合うお酒</strong>
       <% @recipe.alcohols.each do |alcohol| %>
-        <p><strong>合うお酒</strong>：<%= safe_join(alcohol.name.split("\n"),tag(:br)) %></p>
+        /<%= safe_join(alcohol.name.split("\n"),tag(:br)) %>
       <% end %>
     </div>
   </div>
