@@ -21,7 +21,9 @@
 - 仕事終わりの夜ごはんを決めたい時
 
 ## 設計書
-<...>
+- ER図                        https://app.diagrams.net/#G1k4Occozm51usaEe3KQCNkGAa3Muv6z0r
+- テーブル定義書              https://docs.google.com/spreadsheets/d/1ZJA7hu1v8u9RiWgYFLYjWExVblVcedF-n6O1CgrmMko/edit#gid=1373217982
+- アプリケーション詳細設計    https://docs.google.com/spreadsheets/d/1_xPvc_wv1M_GHmUqWFNA8ep8jD57qfS_IF3192brwIY/edit#gid=2133469642
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -31,4 +33,4 @@
 - IDE：Cloud9
 
 ## 使用素材
-- フリー画像素材　https://pixabay.com/ja/
+- フリー画像素材 「pixabay」　https://pixabay.com/ja/
