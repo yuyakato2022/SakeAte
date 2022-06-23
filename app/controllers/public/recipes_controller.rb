@@ -18,8 +18,8 @@ class Public::RecipesController < ApplicationController
       @recipes = Recipe.latest.page(params[:page]).per(10)
     elsif params[:star_count]
       rank = Review.group(:recipe_id).order('avg(rate) desc')
-      @recipes = Recipe.where(id: rank.pluck(:recipe_id))
-      @recipes = @recipes.page(params[:page]).per(10)
+      recipe = Recipe.where(id: rank.pluck(:recipe_id))
+      @recipes = recipe.page(params[:page]).per(10)
     else
       @recipes = Recipe.all.page(params[:page]).per(10)
     end

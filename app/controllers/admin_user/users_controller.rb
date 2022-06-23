@@ -9,7 +9,7 @@ class AdminUser::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @reviews = Review.all
+    @reviews = @user.reviews
   end
 
   def edit

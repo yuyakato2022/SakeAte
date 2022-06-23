@@ -35,12 +35,11 @@ class Public::UsersController < ApplicationController
     #現在ログインしているユーザーを@customerに格納
     @user = User.find(current_user.id)
      if @user.update(is_deleted: true)
-       flash[:notice] = " 退会しました"
       #sessionIDのresetを行う
       reset_session
       redirect_to root_path
+      flash[:notice] = " 退会しました"
      else
-      flash[:notice] = " 退会に失敗しました"
       render :show
      end
   end

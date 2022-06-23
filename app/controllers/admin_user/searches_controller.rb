@@ -7,9 +7,6 @@ class AdminUser::SearchesController < ApplicationController
   def search
     @recipes = @q_recipe.result(distinct: true)
     @users = @q_user.result(distinct: true)
-    # if @users.name == nil?
-    #   redirect_to request.referer
-    # end
   end
 
   private
