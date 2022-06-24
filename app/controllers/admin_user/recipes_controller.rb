@@ -24,7 +24,7 @@ class AdminUser::RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      redirect_to admin_user_recipes_path
+      redirect_to admin_user_recipe_path(@recipe)
       flash[:notice] = "レシピ登録完了"
     else
       render :new
