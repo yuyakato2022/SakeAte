@@ -8,7 +8,7 @@ class Public::ReviewsController < ApplicationController
     #レビューをしたか確認
     review_count = Review.where(recipe_id: params[:recipe_id]).where(user_id: current_user.id).count
     #レビューは一回以下か
-    if review_count < 1
+    if review_count < 1 
       review.save
       redirect_to public_recipe_path(recipe.id)
       flash[:notice] = "レビューを保存しました"

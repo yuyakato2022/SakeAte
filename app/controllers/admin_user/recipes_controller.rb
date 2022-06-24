@@ -34,7 +34,7 @@ class AdminUser::RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-      redirect_to admin_user_recipes_path
+      redirect_to admin_user_recipe_path(@recipe)
       flash[:notice] = "編集完了"
     else
       render :edit

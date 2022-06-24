@@ -4,7 +4,7 @@ class AdminUser::UsersController < ApplicationController
   layout 'admin_user/application'
 
   def index
-    @users = User.all.page(params[:page]).per(4)
+    @users = User.all.page(params[:page]).per(10)
   end
 
   def show
@@ -18,9 +18,9 @@ class AdminUser::UsersController < ApplicationController
 
 
   def update
-    user = User.find(params[:id])
-    user.update(user_params)
-    redirect_to admin_user_users_path
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to admin_user_user_path(@user)
     flash[:notice] = "ステータス変更完了"
   end
 
