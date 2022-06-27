@@ -9,7 +9,17 @@ class AdminUser::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all.page(params[:page]).per(10)
+    @alcohols = Alcohol.all
+    
+    if params[:alcohol_id]
+      @alcohol = Alcohol.find(params[:alcohol_id])
+      @recipes = @alcohol.recipes.page(params[:page]).per(20)
+    elsif params[:latest]
+      @recipes = Recipe.latest.page(params[:page]).per(20)
+    else
+      @recipes = Recipe.all.page(params[:page]).per(20)
+    end
+
   end
 
   def show

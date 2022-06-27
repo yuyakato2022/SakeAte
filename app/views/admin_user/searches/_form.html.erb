@@ -1,5 +1,5 @@
 <%= search_form_for q, url: admin_user_search_path, method: :get do |f| %>
-  <%= f.text_field :name_cont %>
+  <%= f.text_field :name_cont, placeholder: "キーワードを入力してください", required: true %>
   <%= f.hidden_field :view_name, :value => view_name %>
   <%= f.submit "検索" %>
 <% end %>

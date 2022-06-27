@@ -20,3 +20,6 @@ ja:
         ingredient: 材料
         procedure: 調理方法
         recipe_genres: お酒の種類
+      review:
+        text: コメント
+        rate: 評価

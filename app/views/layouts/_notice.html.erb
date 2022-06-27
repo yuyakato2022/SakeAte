@@ -1,3 +1,11 @@
-<% if notice %>
- <p id="notice" class="alert alert-warning m-0 text-center bg-white" ><%= notice %></p>
+<% flash.each do |key, value| %>
+  <p class="notice notice-<%= key %>">
+    <%= value %>
+  </p>
 <% end %>
+<script>
+  window.setTimeout(() => {
+    $(".notice").slideUp();
+  }, 3000);
+</script>
+

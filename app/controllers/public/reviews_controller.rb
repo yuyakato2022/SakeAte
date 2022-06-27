@@ -8,13 +8,18 @@ class Public::ReviewsController < ApplicationController
     #レビューをしたか確認
     review_count = Review.where(recipe_id: params[:recipe_id]).where(user_id: current_user.id).count
     #レビューは一回以下か
-    if review_count < 1 
-      review.save
-      redirect_to public_recipe_path(recipe.id)
-      flash[:notice] = "レビューを保存しました"
+    if review.valid?
+      if review_count < 1
+        review.save
+        redirect_to request.referer
+        flash[:notice] = "レビューを保存しました"
+      else
+        redirect_to request.referer
+        flash[:notice] = "レビューの投稿は一度までです"
+      end
     else
-      redirect_to public_recipe_path(recipe.id)
-      flash[:notice] = "レビューの投稿は一度までです"
+      flash[:notice] = "コメントと評価を入力してください"
+      redirect_to request.referer
     end
 
   end

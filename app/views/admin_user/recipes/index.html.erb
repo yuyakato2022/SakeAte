@@ -1,18 +1,37 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 mt-3 mb-3 text-center">
-      <%= link_to new_admin_user_recipe_path,class: 'text-info' do %>
-        <h4><i class="fas fa-plus"></i>レシピ追加</h4>
+      <h4>お酒の種類</h4>
+      <% @alcohols.each do |alcohol| %>
+        <%= link_to admin_user_recipes_path(alcohol_id: alcohol.id), class: "text-dark" do %>
+          <i class="fas fa-beer text-warning"></i><%= alcohol.name %>
+        <% end %>
       <% end %>
     </div>
     <div class="col-lg-6 mt-3 mb-3 text-center">
       <p>レシピ名検索</p>
       <%= render "admin_user/searches/form", q: @q_recipe, view_name: "recipe" %>
+      <%= link_to '新しい順', admin_user_recipes_path(latest: "true"), class: "btn btn-outline-danger" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 mt-3 mb-3 text-center">
+      <%= link_to new_admin_user_recipe_path,class: 'text-info' do %>
+        <h4><i class="fas fa-plus"></i>レシピ追加</h4>
+      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12 mt-5 mb-3 text-center">
-      <h2><strong>レシピ一覧</strong></h2>
+      <h2>
+        <% if @alcohol.present? %>
+          <%= @alcohol.name %>に合うおすすめレシピ
+        <% elsif params[:latest].present? %>
+          すべてのレシピ＜新着順＞
+        <% else %>
+          すべてのレシピ
+        <% end %>
+      </h2>
     </div>
   </div>
   <div class="row">

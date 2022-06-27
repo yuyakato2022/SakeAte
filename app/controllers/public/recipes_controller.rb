@@ -10,24 +10,16 @@ class Public::RecipesController < ApplicationController
 
   def index
     @alcohols = Alcohol.all
-
+    
     if params[:alcohol_id]
       @alcohol = Alcohol.find(params[:alcohol_id])
       @recipes = @alcohol.recipes.page(params[:page]).per(10)
-      @pages = @recipes
     elsif params[:latest]
       @recipes = Recipe.latest.page(params[:page]).per(10)
-      @pages = @recipes
     elsif params[:star_count]
-      ranks = Review.group(:recipe_id).order('avg(rate) desc').page(params[:page]).per(10)
-      @recipes = Array.new
-      ranks.each do |rank|
-        @recipes.push(Recipe.find(rank.recipe_id))
-      end
-       @pages = ranks
+      @recipes = Recipe.star_count.page(params[:page]).per(10)
     else
-      @recipes = Recipe.all.page(params[:page])
-      @pages = @recipes
+      @recipes = Recipe.all.page(params[:page]).per(10)
     end
 
   end

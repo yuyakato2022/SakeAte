@@ -11,35 +11,35 @@ class Public::SessionsController < Devise::SessionsController
 
   # 退会しているかを判断するメソッド
   def user_state
-      ## 【処理内容1】 入力されたemailからアカウントを1件取得
-      @user = User.find_by(email: params[:user][:email])
-      ## アカウントを取得できなかった場合、このメソッドを終了する
-      ## もし@userがある（!true=false）なら下の処理へ、ない（!false=true）ならreturnして
-      return if !@user
-      ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致（true）　かつ　is_withdrawalが（false）
-      if @user.valid_password?(params[:user][:password]) && !(@user.is_deleted?)
-      ## 【処理内容3】（!false=true）だった場合、退会していないのでcreateを実行
-      else
-      ## !true（false）だった場合、退会しているのでサインアップ画面に遷移する
-      flash[:notice] = "退会済みです。新規会員登録を行なってください"
-      redirect_to new_user_registration_path
-      end
+    ## 【処理内容1】 入力されたemailからアカウントを1件取得
+    @user = User.find_by(email: params[:user][:email])
+    ## アカウントを取得できなかった場合、このメソッドを終了する
+    ## もし@userがある（!true=false）なら下の処理へ、ない（!false=true）ならreturnして
+    return if !@user
+    ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致（true）　かつ　is_withdrawalが（false）
+    if @user.valid_password?(params[:user][:password]) && !(@user.is_deleted?)
+    ## 【処理内容3】（!false=true）だった場合、退会していないのでcreateを実行
+    else
+    ## !true（false）だった場合、退会しているのでサインアップ画面に遷移する
+    flash[:notice] = "退会済みです。新規会員登録を行なってください"
+    redirect_to new_user_registration_path
+    end
   end
 
 
 
-    private
+  private
 
-    def after_sign_in_path_for(resource)
-      flash[:notice] = "ログインしました"
-      public_recipes_path
-    end
+  def after_sign_in_path_for(resource)
+    flash[:notice] = "ログインしました"
+    public_recipes_path
+  end
 
 
-    def after_sign_out_path_for(resource)
-      flash[:notice] = " ログアウトしました"
-      root_path
-    end
+  def after_sign_out_path_for(resource)
+    flash[:notice] = " ログアウトしました"
+    root_path
+  end
 
   # GET /resource/sign_in
   # def new
