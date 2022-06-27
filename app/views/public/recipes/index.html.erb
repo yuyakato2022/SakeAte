@@ -4,6 +4,10 @@
       <h2><strong>
         <% if @alcohol.present? %>
           <%= @alcohol.name %>に合うおすすめレシピ
+        <% elsif params[:latest].present? %>
+          すべてのレシピ＜新着順＞
+        <% elsif params[:star_count].present? %>
+          すべてのレシピ＜ランキング順＞
         <% else %>
           すべてのレシピ
         <% end %>

@@ -20,12 +20,8 @@ class Public::UsersController < ApplicationController
       redirect_to public_user_path(@user)
       flash[:notice] = " 編集完了"
     else
-      render "edit"
+      render :edit
     end
-  end
-
-  def update_resource(resource, params)
-    resource.update_without_password(params)
   end
 
   def quit
@@ -34,14 +30,14 @@ class Public::UsersController < ApplicationController
   def withdraw
     #現在ログインしているユーザーを@customerに格納
     @user = User.find(current_user.id)
-     if @user.update(is_deleted: true)
+    if @user.update(is_deleted: true)
       #sessionIDのresetを行う
       reset_session
       redirect_to root_path
       flash[:notice] = " 退会しました"
-     else
+    else
       render :show
-     end
+    end
   end
 
   def user_params

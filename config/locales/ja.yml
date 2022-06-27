@@ -5,11 +5,12 @@ ja:
         name: 名前
         email: メールアドレス
         password: パスワード
+        password_confirmation: パスワードの確認
       user:
         name: 名前
         email: メールアドレス
         password: パスワード
-        confirmation: パスワードの確認
+        password_confirmation: パスワードの確認
       alcohol:
         name: 名前
       recipe:
