@@ -1,18 +1,17 @@
-<%= render 'layouts/errors', obj: @alcohol %>
 <div class="container">
+  <!--追加フォーム＋エラーメッセージ-->
   <div class="row">
-    <div class="col-lg-12 mb-5 text-center">
-      <h2><strong>お酒追加</strong></h2>
+    <div class="col-lg-12 mt-5 mb-3 text-center">
+      <h2>お酒追加</h2>
+      <%= render 'layouts/errors', obj: @alcohol %>
       <%= form_with model: @alcohol, url: admin_user_alcohols_path, method: :post do |f| %>
-        <strong><%= f.label :name, '種類' %></strong>
-        <%= f.text_field :name %>
-        <%= f.submit "登録" %>
+        <%= render "admin_user/alcohols/form", f: f %>
       <% end %>
     </div>
   </div>
-
+  <!--お酒一覧（テーブル）-->
   <div class="row">
-    <div class="col-lg-6 text-center offset-3">
+    <div class="col-lg-6 text-center mb-3 offset-3">
       <table class="table table-bordered">
         <thead class="thead-dark">
           <tr>
@@ -34,4 +33,5 @@
       </table>
     </div>
   </div>
+
 </div>

@@ -14,26 +14,7 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-lg-12 mb-3 text-center">
-      <%= image_tag @recipe.get_image(400,400),class: "image-show" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12 text-center">
-      <p class="comment-show"><%= @recipe.explanation %></p>
-    </div>
-  </div>
-
-  <div class="row mx-auto">
-    <div class="col-lg-6">
-      <p class="text-bg"><strong>食材</strong></br><%= safe_join(@recipe.ingredient.split("\n"),tag(:br)) %></p>
-    </div>
-    <div class="col-lg-6">
-      <p class="text-bg"><strong>作り方</strong></br><%= safe_join(@recipe.procedure.split("\n"),tag(:br)) %></p>
-    </div>
-  </div>
+  <%= render "admin_user/recipes/show", recipe: @recipe %>
 
   <div class="row mx-auto mt-5">
     <div class="col-lg-4">

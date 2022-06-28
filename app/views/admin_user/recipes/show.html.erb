@@ -1,5 +1,5 @@
 <div class="container">
-
+  <!--編集or削除リンク-->
   <div class="row">
     <div class="col-lg-6 text-center mt-3 mb-3 ">
       <%= link_to edit_admin_user_recipe_path(@recipe) ,class: "text-success" do %>
@@ -12,7 +12,7 @@
       <% end %>
     </div>
   </div>
-
+  <!--タイトルとタグ-->
   <div class="row">
     <div class="col-lg-12 mt-5 mb-1 p-2 text-center">
       <h2>
@@ -24,27 +24,9 @@
       <% end %>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-lg-12 mb-3 text-center">
-      <%= image_tag @recipe.get_image(400,400),class: "image-show" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12 text-center">
-      <p class="comment-show"><%= @recipe.explanation %></p>
-    </div>
-  </div>
-
-  <div class="row mx-auto">
-    <div class="col-lg-6">
-      <p class="text-bg"><strong>食材</strong></br><%= safe_join(@recipe.ingredient.split("\n"),tag(:br)) %></p>
-    </div>
-    <div class="col-lg-6">
-      <p class="text-bg"><strong>作り方</strong></br><%= safe_join(@recipe.procedure.split("\n"),tag(:br)) %></p>
-    </div>
-  </div>
+  <!--レシピ詳細-->
+  <%= render "admin_user/recipes/show", recipe: @recipe %>
+  <!--戻るボタン-->
   <div class="row">
     <div class="col-lg-12 mt-3 mb-3 text-center">
       <%= link_to admin_user_recipes_path, class: 'text-link' do %>
@@ -52,6 +34,5 @@
       <% end %>
     </div>
   </div>
-
 
 </div>

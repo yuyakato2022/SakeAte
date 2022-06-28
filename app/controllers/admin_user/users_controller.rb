@@ -16,11 +16,10 @@ class AdminUser::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-
   def update
-    @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to admin_user_user_path(@user)
+    user = User.find(params[:id])
+    user.update(user_params)
+    redirect_to admin_user_user_path
     flash[:notice] = "ステータス変更完了"
   end
 

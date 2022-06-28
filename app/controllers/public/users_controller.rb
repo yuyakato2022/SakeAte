@@ -1,11 +1,12 @@
 class Public::UsersController < ApplicationController
 
-  before_action :authenticate_user!
-
   layout 'public/application'
+
+  before_action :authenticate_user!
 
   def show
     @user = User.find(current_user.id)
+    # ユーザーお気に入り一覧
     recipes = Recipe.where(id: @user.bookmarks.pluck(:recipe_id))
     @bookmark_list = recipes.page(params[:page]).per(10)
   end
@@ -17,21 +18,21 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-      redirect_to public_user_path(@user)
+      redirect_to public_user_path
       flash[:notice] = " 編集完了"
     else
       render :edit
     end
   end
 
+  # 退会ページ
   def quit
   end
-
+  # 会員ステータス更新
   def withdraw
-    #現在ログインしているユーザーを@customerに格納
     @user = User.find(current_user.id)
+    #sessionIDのresetを行う
     if @user.update(is_deleted: true)
-      #sessionIDのresetを行う
       reset_session
       redirect_to root_path
       flash[:notice] = " 退会しました"
@@ -39,6 +40,8 @@ class Public::UsersController < ApplicationController
       render :show
     end
   end
+
+  private
 
   def user_params
     params.require(:user).permit(:name, :email, :profile_image)

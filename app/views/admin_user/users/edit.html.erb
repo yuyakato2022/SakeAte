@@ -1,9 +1,11 @@
 <div class="container">
+  <!--タイトル-->
   <div class="row">
     <div class="col-lg-12 mt-3 mb-3 text-center">
       <h2><strong><%= @user.name %>様の会員ステータス変更</strong></h2>
     </div>
   </div>
+  <!--ステータス変更-->
   <div class="row">
     <div class="col-lg-12 mt-3 mb-3 text-center">
       <%= form_with model: @user, url: admin_user_user_path(@user), method: :patch do |f| %>
@@ -13,6 +15,7 @@
       <% end %>
     </div>
   </div>
+  <!--戻るボタン-->
   <div class="row">
     <div class="col-lg-12 mt-3 mb-3 text-center">
       <%= link_to admin_user_users_path, class: 'text-link' do %>
@@ -20,6 +23,7 @@
       <% end %>
     </div>
   </div>
+
 </div>
 
 

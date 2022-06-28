@@ -1,6 +1,7 @@
 class Public::SearchesController < ApplicationController
   
   layout 'public/application'
+  
   before_action :authenticate_user!
   before_action :set_q,only: [:search]
   

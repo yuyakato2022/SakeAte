@@ -1,3 +1,4 @@
+<!--お酒タグ（リンクレシピページ）-->
 <% alcohols.each do |alcohol| %>
   <%= link_to public_recipes_path(alcohol_id: alcohol.id), class: "text-dark" do %>
     <i class="fas fa-beer text-warning"></i><%= alcohol.name %>

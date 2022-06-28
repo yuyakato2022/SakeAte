@@ -1,0 +1,47 @@
+<!--レシピ一覧-->
+<div class="row">
+  <% recipes.each do |recipe| %>
+    <div class="col-lg-6 mb-5">
+      <div class="magnification">
+        <div class="card w-100 text-center mt-4 shadow-lg">
+          <!--レシピ詳細リンク（レシピコメントまで）-->
+          <%= link_to public_recipe_path(recipe.id),class: 'text-link' do %>
+            <%= image_tag recipe.get_image(400,400),class: 'card-img-top' %>
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= recipe.name %></strong></h5>
+            <p class="card-text"><%= recipe.explanation %></p>
+          </div>
+          <% end %>
+          <!--お気に入りボタン＋評価-->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span id= "bookmarks_<%= recipe.id %>" >
+                <%= render "public/bookmarks/bookmark", recipe: recipe %>
+              </span>
+              お気に入り数：<%= recipe.bookmarks.count %> ｜
+              レビュー数：<%= recipe.reviews.count %>
+            </li>
+            <li class="list-group-item">
+              <span>評価：<%= recipe.reviews_avg %>点</span>：
+              <span id="rate_<%= recipe.id %>" class="form-group"></span>
+                <script>
+                $(document).on('turbolinks:load', function() {
+                  $('#rate_<%= recipe.id %>').empty();
+                  $('#rate_<%= recipe.id %>').raty({
+                    size: 20,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= recipe.reviews_avg %>,
+                  });
+                });
+                </script>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -2,15 +2,10 @@ class Recipe < ApplicationRecord
 
 	has_many :recipe_genres, dependent: :destroy
 	has_many :alcohols, through: :recipe_genres, dependent: :destroy
-
 	has_many :bookmarks, dependent: :destroy
-
 	has_many :reviews, dependent: :destroy
 
 	has_one_attached :image
-
-	scope :latest, -> {order(created_at: :desc)}
-	scope :star_count, -> {left_joins(:reviews).group(:id).order("avg(reviews.rate) DESC")}
 
 	validates :image, presence: true
 	validates :name, length: { in: 2..30 }
@@ -19,7 +14,10 @@ class Recipe < ApplicationRecord
 	validates :ingredient, length: { maximum: 400 }
 	validates :procedure, length: { maximum: 400 }
 
-#平均値の記述 BigDecimalから整数少数へ変換
+	# 新着順・ランキング順
+	scope :latest, -> {order(created_at: :desc)}
+	scope :star_count, -> {left_joins(:reviews).group(:id).order("avg(reviews.rate) DESC")}
+	#ランキング平均値の記述 BigDecimalから整数少数へ変換
 	def reviews_avg
 		reviews.average(:rate).to_s.to_f.round(1)
 	end
@@ -31,7 +29,6 @@ class Recipe < ApplicationRecord
 	  end
 	  image.variant(resize_to_limit: [width, height]).processed
 	end
-
 	#bookmarkテーブルにユーザーidが存在しているかを検証
   def bookmarked_by?(user)
     bookmarks.exists?(user_id: user.id)

@@ -1,17 +1,13 @@
 # frozen_string_literal: true
-
 class Public::RegistrationsController < Devise::RegistrationsController
 
   layout 'public/application'
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
   def after_sign_up_path_for(resource)
     flash[:notice] = "新規登録が完了しました"
-    public_user_path(@user)
+    public_user_path
   end
-
-
   # GET /resource/sign_up
   # def new
   #   super

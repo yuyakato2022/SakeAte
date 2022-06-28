@@ -1,14 +1,15 @@
+<!--ユーザー評価フォーム-->
 <%= form_with model: [recipe, review], url: public_recipe_reviews_path(@recipe), method: :post do |f| %>
+  <!--コメントフォーム-->
   <div class="form-group">
     <%= f.label :text,"コメント" %>
     <%= f.text_area :text, rows: '5', placeholder: "コメントをここに", class: 'form-control' %>
   </div>
-
+  <!--星評価フォーム-->
   <div class="form-group" id="star">
     <%= f.label :rate %>
     <%= f.hidden_field :rate, id: :review_star, class:'form-control' %>
   </div>
-
   <script>
   $(document).on('turbolinks:load', function() {
     $('#star').empty();
@@ -23,4 +24,5 @@
   })
   </script>
   <%= f.submit "送信する" %>
+  
 <% end %>

@@ -1,9 +1,11 @@
 <div class="container">
+  <!--タイトル-->
   <div class="row">
     <div class="col-lg-12 mt-5 mb-3 text-center">
-      <h2><strong>MY PAGE</strong></h2>
+      <h2>MY PAGE</h2>
     </div>
   </div>
+  <!--ユーザー編集リンク-->
   <div class="row">
     <div class="col-lg-12 mb-3 text-center">
       <%= link_to edit_public_user_path do %>
@@ -12,9 +14,15 @@
           <i class="fas fa-edit text-success"></i>
         </h5>
       <% end %>
-      <h4><strong><%= @user.name %>様のお気に入り一覧</strong></h4>
     </div>
   </div>
+  <!--タイトル-->
+  <div class="row">
+    <div class="col-lg-12 mb-3 text-center">
+      <h4><%= @user.name %>様のお気に入り一覧</h4>
+    </div>
+  </div>
+  <!--お気に入り一覧-->
   <div class="row">
     <% if @bookmark_list.present? %>
       <% @bookmark_list.each do |recipe| %>
@@ -23,7 +31,7 @@
           <%= link_to public_recipe_path(recipe.id),class: 'text-link' do %>
             <p><%= image_tag recipe.get_image(200,200) ,class: 'image-mypage' %></p>
             <p><strong>レシピ名</strong></p>
-             <%= recipe.name %>
+            <%= recipe.name %>
           <% end %>
           <sapn id= "bookmarks_<%= recipe.id %>" >
             <%= render "public/bookmarks/bookmark", recipe: recipe %>
@@ -33,12 +41,11 @@
       <% end %>
     <% end %>
   </div>
+  <!--ページネーション-->
   <div class="row">
     <div class="col-lg-12 mt-5 mb-3 text-center">
       <%= paginate @bookmark_list  %>
     </div>
   </div>
+
 </div>
-
-
-

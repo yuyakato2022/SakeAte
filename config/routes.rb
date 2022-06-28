@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
   devise_for :admin_user, controllers: {
     sessions: "admin_user/sessions"
   }
@@ -12,16 +11,18 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    get '/users', to: redirect("/users/sign_up")
   end
 
   root to: 'public/recipes#top'
 
   namespace :admin_user do
     get '/' => 'recipes#top'
-    resources :alcohols, only:[:index, :edit, :create, :update]
     resources :recipes do
       resources :reviews, only:[:create, :destroy]
     end
+    resources :alcohols, only:[:index, :edit, :create]
+    patch  'alcohols/:id/edit' => 'alcohols#update'
     resources :users, only:[:index, :show, :edit, :update]
     get "search" => "searches#search"
   end

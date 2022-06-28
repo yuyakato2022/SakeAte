@@ -1,27 +1,28 @@
 <din class="container">
-
+  <!--タイトル-->
   <div class="row">
     <div class="col-lg-12 mt-5 mb-3 text-center">
-      <h2><strong>ユーザー 一覧</strong></h2>
+      <h2>ユーザー一覧</h2>
     </div>
   </div>
-
+  <!--ユーザー部分検索-->
   <div class="row">
-    <div class="col-lg-12 mb-3 text-right">
+    <div class="col-lg-12 mb-3 pr-5 text-right">
       <p class="pr-5">ユーザー検索</p>
       <%= render "admin_user/searches/form", q: @q_user, view_name: "user" %>
     </div>
   </div>
-
-
-  <div class="row">
-    <div class="col-lg-12 mt-3 mb-3 text-center">
+  <!--会員一覧（テーブル）-->
+  <div class="row  justify-content-center">
+    <div class="col-lg-10 mt-3 mb-3 text-center">
       <%= render "admin_user/users/index", users: @users %>
     </din>
   </din>
+  <!--ページネーション-->
   <div class="row">
     <div class="col-lg-12 mt-3 mb-3">
       <%= paginate @users %>
     </din>
   </din>
+
 </din>

@@ -5,21 +5,23 @@ class AdminUser::RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.recipe_genres.build  #recipeに紐づく中間テーブルのインスタンス生成
+    #recipeに紐づく中間テーブルのインスタンス生成
+    @recipe.recipe_genres.build
   end
 
   def index
     @alcohols = Alcohol.all
-    
+    # お酒タグに並び替え
     if params[:alcohol_id]
       @alcohol = Alcohol.find(params[:alcohol_id])
       @recipes = @alcohol.recipes.page(params[:page]).per(20)
+    # 新着順に並び替え
     elsif params[:latest]
       @recipes = Recipe.latest.page(params[:page]).per(20)
+    # 全てのレシピ
     else
       @recipes = Recipe.all.page(params[:page]).per(20)
     end
-
   end
 
   def show
@@ -28,7 +30,8 @@ class AdminUser::RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
-    @recipe.recipe_genres.build  #recipeに紐づく中間テーブルのインスタンス生成
+    #recipeに紐づく中間テーブルのインスタンス生成
+    @recipe.recipe_genres.build
   end
 
   def create
@@ -56,8 +59,6 @@ class AdminUser::RecipesController < ApplicationController
     recipe.destroy
     redirect_to admin_user_recipes_path
   end
-
-
 
   private
 
