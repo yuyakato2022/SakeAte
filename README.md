@@ -2,7 +2,7 @@
 
 ## サイト概要
 ### サイトテーマ
-ビールや日本酒など各々にあった食べ物を紹介しレシピを提供するコミュニティサイトです。
+ビールや日本酒など各々のお酒にあった食べ物を紹介しレシピを提供するレビューサイトです。
 
 ### テーマを選んだ理由
 仕事終わりの晩酌のあてや自宅での飲み会などお酒は決まっているけどおつまみが決まらない時、ヒントになるサービスがあれば便利だと考えテーマにしました。
@@ -24,6 +24,7 @@
 - ER図 https://app.diagrams.net/#G1k4Occozm51usaEe3KQCNkGAa3Muv6z0r
 - テーブル定義書 https://docs.google.com/spreadsheets/d/1ZJA7hu1v8u9RiWgYFLYjWExVblVcedF-n6O1CgrmMko/edit#gid=1373217982
 - アプリケーション詳細設計 https://docs.google.com/spreadsheets/d/1_xPvc_wv1M_GHmUqWFNA8ep8jD57qfS_IF3192brwIY/edit#gid=2133469642
+- テスト仕様書 https://docs.google.com/spreadsheets/d/1wXZ6lJtJHgCo16HYH-1PoV-dwIuNGg1l/edit#gid=547097470
 
 ## 開発環境
 - OS：Linux(CentOS)
