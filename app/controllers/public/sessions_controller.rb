@@ -9,10 +9,10 @@ class Public::SessionsController < Devise::SessionsController
   def user_state
     @user = User.find_by(email: params[:user][:email])
     return if !@user
-    if @user.valid_password?(params[:user][:password]) && !(@user.is_deleted?)
-    else
+    if @user.is_deleted?
       redirect_to new_user_registration_path
       flash[:notice] = "退会済みです。新規会員登録を行なってください"
+    else
     end
   end
 
