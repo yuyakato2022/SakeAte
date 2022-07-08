@@ -25,7 +25,7 @@
 - テーブル定義書 https://docs.google.com/spreadsheets/d/1ZJA7hu1v8u9RiWgYFLYjWExVblVcedF-n6O1CgrmMko/edit#gid=1373217982
 - アプリケーション詳細設計 https://docs.google.com/spreadsheets/d/1_xPvc_wv1M_GHmUqWFNA8ep8jD57qfS_IF3192brwIY/edit#gid=2133469642
 - テスト仕様書 https://docs.google.com/spreadsheets/d/1wXZ6lJtJHgCo16HYH-1PoV-dwIuNGg1l/edit#gid=547097470
-- AWS 構成図 https://app.diagrams.net/#G1zMeRmML69lpv8Br8Lye-zkeC74vkskpF
+- AWS構成図 https://app.diagrams.net/#G1zMeRmML69lpv8Br8Lye-zkeC74vkskpF
 - インフラ設計書 https://docs.google.com/spreadsheets/d/1xWELmcMiwKQI-NJRtYvquUSv3od8QJKhdHixXBI2qj8/edit#gid=0
 
 ## 開発環境
