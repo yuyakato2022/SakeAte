@@ -2,6 +2,16 @@
 
 class AdminUser::SessionsController < Devise::SessionsController
   layout 'admin_user/application'
+
+  def after_sign_in_path_for(resource)
+    flash[:notice] = "ログインしました"
+    admin_user_recipes_path
+  end
+
+  def after_sign_out_path_for(resource)
+    flash[:notice] = " ログアウトしました"
+    root_path
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
