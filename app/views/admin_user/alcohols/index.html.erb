@@ -26,6 +26,9 @@
                 <%= link_to edit_admin_user_alcohol_path(alcohol.id),class: "text-success" do %>
                   <i class="fas fa-edit"></i>編集する
                 <% end %>
+                <%= link_to admin_user_alcohol_path(alcohol), method: :delete, "data-confirm" => "本当に削除しますか？" ,class: "text-secondary" do %>
+                  <i class="fas fa-trash-alt text-dark"></i>削除する
+                <% end %>
               </td>
             </tr>
           <% end %>

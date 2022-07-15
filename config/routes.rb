@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     resources :recipes do
       resources :reviews, only:[:create, :destroy]
     end
-    resources :alcohols, only:[:index, :edit, :create]
-    patch  'alcohols/:id/edit' => 'alcohols#update'
+    resources :alcohols, only:[:index, :edit, :create, :destroy]
+    patch  'alcohols/:id/edit' => 'alcohols#update'#URL変更のため別途記述
     resources :users, only:[:index, :show, :edit, :update]
     get "search" => "searches#search"
   end

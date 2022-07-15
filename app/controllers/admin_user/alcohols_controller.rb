@@ -32,6 +32,12 @@ class AdminUser::AlcoholsController < ApplicationController
     end
   end
 
+  def destroy
+    alcohol = Alcohol.find(params[:id])
+    alcohol.destroy
+    redirect_to admin_user_alcohols_path
+  end
+
   private
 
   def alcohol_params
