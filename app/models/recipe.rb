@@ -11,8 +11,8 @@ class Recipe < ApplicationRecord
 	validates :name, length: { in: 2..30 }
 	validates :recipe_genres, presence: true
 	validates :explanation, length: { in: 1..100 }
-	validates :ingredient, length: { maximum: 500 }
-	validates :procedure, length: { maximum: 1000 }
+	validates :ingredient, length: { maximum: 1000 }
+	validates :procedure, length: { maximum: 2500 }
 
 	# 新着順・ランキング順
 	scope :latest, -> {order(created_at: :desc)}
