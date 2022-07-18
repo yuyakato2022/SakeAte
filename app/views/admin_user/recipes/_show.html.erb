@@ -13,9 +13,19 @@
 <!--食材と調理法-->
 <div class="row mx-auto">
   <div class="col-lg-6">
-    <p class="text-bg"><strong>食材</strong></br><%= safe_join(recipe.ingredient.split("\n"),tag(:br)) %></p>
+    <p class="text-bg">
+      <strong>食材</strong></br>
+      <span class="text">
+        <%= safe_join(recipe.ingredient.split("\n"),tag(:br)) %>
+      </span>
+    </p>
   </div>
   <div class="col-lg-6">
-    <p class="text-bg"><strong>作り方</strong></br><%= safe_join(recipe.procedure.split("\n"),tag(:br)) %></p>
+    <p class="text-bg">
+      <strong>作り方</strong></br>
+      <span class="text">
+        <%= safe_join(recipe.procedure.split("\n"),tag(:br)) %>
+      </span>
+    </p>
   </div>
 </div>
