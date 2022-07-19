@@ -10,8 +10,8 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name, presence: true
-  validates :email, presence: true
+  validates :name, presence: true  #新規登録　名前
+  validates :email, presence: true #新規登録   パスワード
 
   def get_profile_image(width, height)
 	  unless profile_image.attached?

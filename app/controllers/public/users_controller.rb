@@ -24,7 +24,6 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-
   # 退会ページ
   def quit
   end

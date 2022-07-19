@@ -7,12 +7,12 @@ class Recipe < ApplicationRecord
 
 	has_one_attached :image
 
-	validates :image, presence: true
-	validates :name, length: { in: 2..30 }
-	validates :recipe_genres, presence: true
-	validates :explanation, length: { in: 1..100 }
-	validates :ingredient, length: { maximum: 1000 }
-	validates :procedure, length: { maximum: 2500 }
+	validates :image, presence: true                  #画像
+	validates :name, length: { in: 2..30 }            #レシピ名
+	validates :recipe_genres, presence: true          #お酒の選択
+	validates :explanation, length: { in: 1..100 }    #コメント
+	validates :ingredient, length: { maximum: 1000 }  #食材
+	validates :procedure, length: { maximum: 2500 }   #手順
 
 	# 新着順・ランキング順
 	scope :latest, -> {order(created_at: :desc)}

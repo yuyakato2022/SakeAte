@@ -1,3 +1,4 @@
+<!--レシピ詳細-->
 <div class="container">
   <div class="row">
     <div class="col-lg-12 mt-5 mb-1 p-2 text-center">
@@ -13,13 +14,14 @@
       <% end %>
     </div>
   </div>
-
+<!--コメント＋食材＋手順-->
   <%= render "admin_user/recipes/show", recipe: @recipe %>
-
+<!--ユーザーコメントフォーム-->
   <div class="row mx-auto mt-5">
     <div class="col-lg-4">
       <%= render "public/reviews/form", recipe: @recipe, review: @review %>
     </div>
+<!--ユーザーコメント一覧-->
     <div class="col-lg-8">
       <%= render "public/reviews/review", recipe: @recipe %>
     </div>
