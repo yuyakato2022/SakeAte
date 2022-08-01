@@ -1,6 +1,6 @@
+// トップのスライドショー
 $(document).on('turbolinks:load', function () {
   $("#theTarget").skippr({
-
     transition : 'fade',
     speed : 1500,
     easing : 'easeOutQuart',

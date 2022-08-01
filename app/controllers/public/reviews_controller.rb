@@ -25,8 +25,15 @@ class Public::ReviewsController < ApplicationController
   end
 
   def destroy
-    Review.find(params[:id]).destroy
-    redirect_to request.referer
+    @review = Review.find(params[:id])
+    if @review.user_id == current_user.id
+      Review.find(params[:id]).destroy
+      redirect_to request.referer
+      flash[:notice] = "レビューを削除しました"
+    else
+      render = :show
+      flash[:alert] = "他人のレビューは削除できません"
+    end
   end
 
   private
