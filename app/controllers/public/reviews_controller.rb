@@ -31,7 +31,7 @@ class Public::ReviewsController < ApplicationController
       redirect_to request.referer
       flash[:notice] = "レビューを削除しました"
     else
-      render = :show
+      redirect_to request.referer
       flash[:alert] = "他人のレビューは削除できません"
     end
   end
