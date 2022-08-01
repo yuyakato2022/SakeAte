@@ -1,10 +1,12 @@
 <!--お気に入りボタン-->
 <% if recipe.bookmarked_by?(current_user) %>
-  <%= link_to public_recipe_bookmarks_path(recipe), method: :delete, remote: true do %>
+  <%= link_to public_recipe_bookmarks_path(recipe), class: 'bookmark-link', method: :delete, remote: true do %>
     <i class="fas fa-bookmark text-warning"></i>
+    お気に入り数：<%= recipe.bookmarks.count %>
   <% end %>
 <% else %>
-  <%= link_to public_recipe_bookmarks_path(recipe), method: :post, remote: true do %>
+  <%= link_to public_recipe_bookmarks_path(recipe), class: 'bookmark-link', method: :post, remote: true do %>
     <i class="far fa-bookmark text-warning"></i>
+      お気に入り数：<%= recipe.bookmarks.count %>
   <% end %>
 <% end %>

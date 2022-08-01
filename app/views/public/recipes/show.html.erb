@@ -4,14 +4,16 @@
     <div class="col-lg-12 mt-5 mb-1 p-2 text-center">
       <h2>
         <strong><%= @recipe.name %></strong>
-        <span id= "bookmarks_<%= @recipe.id %>" >
-          <%= render "public/bookmarks/bookmark", recipe: @recipe %>
-        </span>
       </h2>
-      <strong>合うお酒</strong>
-      <% @recipe.alcohols.each do |alcohol| %>
-        /<%= safe_join(alcohol.name.split("\n"),tag(:br)) %>
-      <% end %>
+      <h5>
+        合うお酒 :
+        <% @recipe.alcohols.each do |alcohol| %>
+          <%= safe_join(alcohol.name.split("\n"),tag(:br)) %>/
+        <% end %>
+      </h5>
+      <span id= "bookmarks_<%= @recipe.id %>" >
+        <%= render "public/bookmarks/bookmark", recipe: @recipe %>
+      </span>
     </div>
   </div>
 <!--コメント＋食材＋手順-->

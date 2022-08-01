@@ -94,6 +94,16 @@ main{
   width: 70%;
 }
 
+// お気に入りリンク
+.bookmark-link{
+  color: #000000;
+}
+
+.bookmark-link:hover{
+  color: #000000;
+  text-decoration: none;
+}
+
 // マイページ　お気に入りレシピの写真
 .image-mypage{
   width: 300px;

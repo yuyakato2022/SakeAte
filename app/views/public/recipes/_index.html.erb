@@ -18,8 +18,7 @@
               <span id= "bookmarks_<%= recipe.id %>" >
                 <%= render "public/bookmarks/bookmark", recipe: recipe %>
               </span>
-              お気に入り数：<%= recipe.bookmarks.count %> ｜
-              レビュー数：<%= recipe.reviews.count %>
+              | レビュー数：<%= recipe.reviews.count %>
             </li>
             <li class="list-group-item">
               <span>評価：<%= recipe.reviews_avg %>点</span>：
